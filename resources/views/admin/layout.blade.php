@@ -48,7 +48,7 @@ License: You must have a valid license purchased only from above link or https:/
         <ul class="nav">
           <li class="nav-item nav-category">Main</li>
           <li class="nav-item">
-            <a href="dashboard-one.html" class="nav-link">
+            <a href="{{ route('dashboard') }}" class="nav-link">
               <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Dashboard</span>
             </a>
@@ -56,20 +56,34 @@ License: You must have a valid license purchased only from above link or https:/
           <li class="nav-item nav-category">web apps</li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Email</span>
+              <i class="link-icon" data-feather="list"></i>
+              <span class="link-title">Category</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
             <div class="collapse" id="emails">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="pages/email/inbox.html" class="nav-link">Inbox</a>
+                  <a href="{{ route('add_categroy') }}" class="nav-link">Add Category</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/email/read.html" class="nav-link">Read</a>
+                  <a href="{{ route('categroy') }}" class="nav-link">Category</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+              <i class="link-icon" data-feather="pocket"></i>
+              <span class="link-title">Sub Category</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="emails">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{ route('add_subcategroy') }}" class="nav-link">Add SubCategory</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/email/compose.html" class="nav-link">Compose</a>
+                  <a href="{{ route('subcategroy') }}" class="nav-link">SubCategory</a>
                 </li>
               </ul>
             </div>
@@ -579,35 +593,26 @@ License: You must have a valid license purchased only from above link or https:/
 										<img src="https://via.placeholder.com/80x80" alt="">
 									</div>
 									<div class="info text-center">
-										<p class="name font-weight-bold mb-0">Amiah Burton</p>
-										<p class="email text-muted mb-3">amiahburton@gmail.com</p>
+										<p class="name font-weight-bold mb-0">{{ Auth::user()->name }}</p>
+										<p class="email text-muted mb-3">{{ Auth::user()->email }}</p>
 									</div>
 								</div>
 								<div class="dropdown-body">
 									<ul class="profile-nav p-0 pt-3">
 										<li class="nav-item">
-											<a href="pages/general/profile.html" class="nav-link">
-												<i data-feather="user"></i>
-												<span>Profile</span>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a href="javascript:;" class="nav-link">
+											<a href="{{ route('profile.edit') }}" class="nav-link">
 												<i data-feather="edit"></i>
 												<span>Edit Profile</span>
 											</a>
 										</li>
 										<li class="nav-item">
-											<a href="javascript:;" class="nav-link">
-												<i data-feather="repeat"></i>
-												<span>Switch User</span>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a href="javascript:;" class="nav-link">
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                            <button type="submit" class="btn text-danger m-0 p-0">
 												<i data-feather="log-out"></i>
-												<span>Log Out</span>
-											</a>
+												<span class='ml-1 pl-2'>Log Out</span>
+											</button>
+                                            </form>
 										</li>
 									</ul>
 								</div>
@@ -618,11 +623,11 @@ License: You must have a valid license purchased only from above link or https:/
 			</nav>
 
             <div class="page-content">
-                <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
-                  <div>
-                    <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
-                  </div>
-                </div>
+
+
+                @yield('main')
+
+
             </div>
         </div>
 	</div>
@@ -646,5 +651,29 @@ License: You must have a valid license purchased only from above link or https:/
   <script src="{{ asset('admin') }}/js/dashboard.js"></script>
   <script src="{{ asset('admin') }}/js/datepicker.js"></script>
 	<!-- end custom js for this page -->
+    {{-- sweetalert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
+    <script>
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "{{ session('success') }}",
+        showConfirmButton: false,
+        timer: 1500
+        });
+    </script>
+    @endif
+    @if (session('status'))
+    <script>
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "{{ session('status') }}",
+        showConfirmButton: false,
+        timer: 1500
+        });
+    </script>
+    @endif
 </body>
 </html>
