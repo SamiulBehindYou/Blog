@@ -25,7 +25,14 @@ Route::middleware('auth')->group(function () {
 
     //Category
     Route::get('add/categroy', [CategoryController::class, 'add_categroy'])->name('add_categroy');
+    Route::post('add/categroy/store', [CategoryController::class, 'store_categroy'])->name('categroy.store');
     Route::get('categroy', [CategoryController::class, 'categroy'])->name('categroy');
+    Route::get('categroy/delete/{id}', [CategoryController::class, 'delete_category'])->name('category.delete');
+    Route::get('categroy/trashed', [CategoryController::class, 'trashed_categroy'])->name('categroy.trashed');
+    Route::get('categroy/restore/{id}', [CategoryController::class, 'restore_categroy'])->name('category.trash.restore');
+    Route::get('categroy/trashed/{id}', [CategoryController::class, 'delete_trashed_categroy'])->name('categroy.trash.delete');
+
+    //Sub category
     Route::get('add/subcategroy', [CategoryController::class, 'add_subcategroy'])->name('add_subcategroy');
     Route::get('subcategroy', [CategoryController::class, 'subcategroy'])->name('subcategroy');
 

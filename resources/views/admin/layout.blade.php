@@ -53,14 +53,14 @@ License: You must have a valid license purchased only from above link or https:/
               <span class="link-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item nav-category">web apps</li>
+          <li class="nav-item nav-category">web controls</li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+            <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false" aria-controls="category">
               <i class="link-icon" data-feather="list"></i>
               <span class="link-title">Category</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="emails">
+            <div class="collapse" id="category">
               <ul class="nav sub-menu">
                 <li class="nav-item">
                   <a href="{{ route('add_categroy') }}" class="nav-link">Add Category</a>
@@ -68,16 +68,19 @@ License: You must have a valid license purchased only from above link or https:/
                 <li class="nav-item">
                   <a href="{{ route('categroy') }}" class="nav-link">Category</a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{ route('categroy.trashed') }}" class="nav-link">Trash</a>
+                </li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+            <a class="nav-link" data-toggle="collapse" href="#subcategory" role="button" aria-expanded="false" aria-controls="subcategory">
               <i class="link-icon" data-feather="pocket"></i>
               <span class="link-title">Sub Category</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="emails">
+            <div class="collapse" id="subcategory">
               <ul class="nav sub-menu">
                 <li class="nav-item">
                   <a href="{{ route('add_subcategroy') }}" class="nav-link">Add SubCategory</a>
