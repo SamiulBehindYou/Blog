@@ -1,13 +1,12 @@
 <?php
 
+use App\Http\Controllers\FontendController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', [FontendController::class, 'font_dashboard'])->name('font.dashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

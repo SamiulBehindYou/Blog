@@ -6,7 +6,7 @@
     <div class="col-md-10 m-auto">
         <div class="card">
             <div class="card-header bg-primary">
-                <h3 class="text-white text-center">Category Table</h3>
+                <h3 class="text-white text-center">Category Trash</h3>
             </div>
             <div class="card-body">
                 <table class="table table-bordered text-center">

@@ -62,6 +62,9 @@ class CategoryController extends Controller
         return back()->withSuccess('Category successfully restored!');
     }
     public function delete_trashed_categroy($id){
+        $category = Category::onlyTrashed()->find($id);
+        unlink(public_path('uploads/categories/'.$category->category_image));
+
         Category::onlyTrashed()->find($id)->forceDelete();
         return back()->withSuccess('Category permanently deleted!');
     }
