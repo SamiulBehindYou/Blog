@@ -87,7 +87,7 @@
                     </div>
                     <!--button-subscribe-->
                     <div class="botton-sub">
-                        <a href="signup.html" class="btn-subscribe">Sign Up</a>
+                        <a href="{{ route('font.login') }}" class="btn-subscribe">Sign In</a>
                     </div>
                     <!--navbar-toggler-->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
