@@ -6,7 +6,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
+// Fontend
 Route::get('/', [FontendController::class, 'font_dashboard'])->name('font.dashboard');
+Route::get('/font/login', [FontendController::class, 'font_login'])->name('font.login');
+Route::get('/font/register', [FontendController::class, 'font_register'])->name('font.register');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
