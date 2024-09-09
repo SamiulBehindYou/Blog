@@ -63,7 +63,7 @@ License: You must have a valid license purchased only from above link or https:/
             <div class="collapse" id="category">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{ route('add_categroy') }}" class="nav-link">Add Category</a>
+                  <a href="{{ route('add.categroy') }}" class="nav-link">Add Category</a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('categroy') }}" class="nav-link">Category</a>
@@ -92,9 +92,9 @@ License: You must have a valid license purchased only from above link or https:/
             </div>
           </li>
           <li class="nav-item">
-            <a href="pages/apps/chat.html" class="nav-link">
-              <i class="link-icon" data-feather="message-square"></i>
-              <span class="link-title">Chat</span>
+            <a href="{{ route('admin.new') }}" class="nav-link">
+              <i class="link-icon" data-feather="user-plus"></i>
+              <span class="link-title">Register new Admin</span>
             </a>
           </li>
           <li class="nav-item">

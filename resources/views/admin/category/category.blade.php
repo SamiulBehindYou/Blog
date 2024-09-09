@@ -31,7 +31,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5" class="text-center"><h3>No data to show</h3></td>
+                        <td colspan="6" class="text-center"><h3>No data to show</h3></td>
                     </tr>
                     @endforelse
                 </table>
