@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Author;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
@@ -13,6 +14,29 @@ class DashboardController extends Controller
         $users = User::all();
         return view('admin.dashboard', compact('users'));
     }
+
+    public function authors(){
+        $authors = Author::all();
+        return view('admin.authors.authors', compact('authors'));
+    }
+
+    public function author_status($id){
+        $author = Author::find($id);
+        if($author->status == 0){
+            $author->status = 1;
+            $author->save();
+        }
+        else{
+            $author->status = 0;
+            $author->save();
+        }
+        return back()->withSuccess('Author status updated!');
+    }
+    public function author_delete($id){
+        Author::find($id)->delete();
+        return back()->withSuccess('Author has been deleted by the admin!');
+    }
+
     public function delete_user($id){
         User::find($id)->delete();
 

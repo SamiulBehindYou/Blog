@@ -53,6 +53,12 @@ License: You must have a valid license purchased only from above link or https:/
               <span class="link-title">Dashboard</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('authors') }}" class="nav-link">
+              <i class="link-icon" data-feather="user"></i>
+              <span class="link-title">Authors</span>
+            </a>
+          </li>
           <li class="nav-item nav-category">web controls</li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false" aria-controls="category">

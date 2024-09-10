@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FontendController::class, 'font_dashboard'])->name('font.dashboard');
 Route::get('/font/login', [FontendController::class, 'font_login'])->name('font.login');
 Route::get('/font/register', [FontendController::class, 'font_register'])->name('font.register');
+Route::post('/author/store', [FontendController::class, 'author_store'])->name('author.store');
+Route::post('/author/login', [FontendController::class, 'author_login'])->name('author.login');
+
 
 
 Route::get('/dashboard', function () {
@@ -27,6 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [DashboardController::class, 'edit_profile'])->name('profile.edit');
     Route::get('/register/admin', [DashboardController::class, 'new_register'])->name('admin.new');
     Route::post('/register/new/admin', [DashboardController::class, 'admin_register'])->name('admin.register');
+
+    // Authors on Admin dashboard
+    Route::get('/authors', [DashboardController::class, 'authors'])->name('authors');
+    Route::get('/authors/status/{id}', [DashboardController::class, 'author_status'])->name('author.status');
+    Route::get('/authors/delete/{id}', [DashboardController::class, 'author_delete'])->name('author.delete');
 
     //Category
     Route::get('category_add', [CategoryController::class, 'add_categroy'])->name('add.categroy');

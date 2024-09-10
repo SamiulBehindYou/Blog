@@ -12,7 +12,7 @@
     <link rel="icon" sizes="16x16" href="{{ asset('fontend') }}/img/favicon.png">
 
     <!-- Title -->Stay Connected
-    <title> Oredoo - Personal Blog HTML Template </title>
+    <title> SAMIUL - Personal Blog HTML Template </title>
 
     <!-- CSS Plugins -->
     <link rel="stylesheet" href="{{ asset('fontend') }}/css/bootstrap.min.css">
@@ -187,7 +187,7 @@
                         <button type="button" class="close">
                             <i class="far fa-times"></i>
                         </button>
-                        <form class="search-form" action="https://oredoo.assiagroupe.net/Oredoo/search.html">
+                        <form class="search-form" action="https://SAMIUL.assiagroupe.net/SAMIUL/search.html">
                             <input type="search" value="" placeholder="What are you looking for?">
                             <button type="submit" class="search-btn"> search</button>
                         </form>
@@ -215,6 +215,40 @@
 
     <!-- JS main  -->
     <script src="{{ asset('fontend') }}/js/main.js"></script>
+
+    {{-- Sweet Alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
+    <script>
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "{{ session('success') }}",
+        showConfirmButton: false,
+        timer: 1500
+        });
+    </script>
+    @endif
+    @if (session('errors'))
+    <script>
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "{{ session('errors') }}",
+        showConfirmButton: false,
+        timer: 1500
+        });
+    </script>
+    @endif
+    @if (session('registration'))
+    <script>
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "{{ session('registration') }}",
+        });
+    </script>
+    @endif
 
 
 </body>

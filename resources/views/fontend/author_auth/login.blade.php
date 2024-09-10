@@ -9,27 +9,30 @@
                     <div class="login-content">
                         <h4>Login</h4>
                         <p></p>
-                        <form action="#" class="sign-form widget-form " method="post">
+                        <form action="{{ route('author.login') }}" class="sign-form widget-form " method="POST">
+                            @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username*" name="username"
-                                    value="">
+                                <input type="email" class="form-control" placeholder="Enter Email*" name="email" value="">
                             </div>
+                            @error('email')
+                                <strong class="text-danger">{{ $message }}</strong>
+                            @enderror
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password*" name="password"
-                                    value="">
+                                <input type="password" class="form-control" placeholder="Password*" name="password" value="">
                             </div>
+                            @error('password')
+                                <strong class="text-danger">{{ $message }}</strong>
+                            @enderror
                             <div class="sign-controls form-group">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="rememberMe">
+                                    <input required type="checkbox" class="custom-control-input" id="rememberMe">
                                     <label class="custom-control-label" for="rememberMe">Remember Me</label>
                                 </div>
-                                <a href="#" class="btn-link ">Forgot Password?</a>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn-custom">Login in</button>
                             </div>
-                            <p class="form-group text-center">Don't have an account? <a href="{{ route('font.register') }}"
-                                    class="btn-link">Create One</a> </p>
+                            <p class="form-group text-center">Don't have an account? <a href="{{ route('font.register') }}" class="btn-link">Create One</a> </p>
                         </form>
                     </div>
                 </div>
