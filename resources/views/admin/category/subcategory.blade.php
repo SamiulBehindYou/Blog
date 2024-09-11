@@ -14,7 +14,6 @@
                         <th width='30'><p>All </p><input type="checkbox" name="selection"></th>
                         <th>SL</th>
                         <th>Sub Category</th>
-                        <th>Category</th>
                         <th>Blogs</th>
                         <th>Created on</th>
                         <th>Action</th>
@@ -24,7 +23,6 @@
                         <td><input type="checkbox" name="selection"></td>
                         <td>{{ $sl+1 }}</td>
                         <td>{{ $subcategory->subcategory_name }}</td>
-                        <td>{{  }}</td>
                         <td>{{ $subcategory->blogs == null ? 'No Blogs':$subcategory->blogs }}</td>
                         <td>{{ $subcategory->created_at }}</td>
                         <td>
