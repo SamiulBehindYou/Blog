@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\SubCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
@@ -12,14 +13,13 @@ use Intervention\Image\Drivers\Gd\Driver;
 
 class CategoryController extends Controller
 {
+    //Categories
     public function categroy(){
         $categories = Category::all();
         return view('admin.category.category', compact('categories'));
     }
     public function trashed_categroy(){
         $categories = Category::onlyTrashed()->get();
-        // print_r($categories);
-        // die();
         return view('admin.category.trashed_category', compact('categories'));
     }
     public function add_categroy(){
@@ -70,11 +70,29 @@ class CategoryController extends Controller
     }
 
     //sub categories
-    public function subcategroy(){
-        return view('admin.category.subcategory');
+    public function add_subcategroy(){
+        $categories = Category::all();
+        return view('admin.category.add_subcategory', compact('categories'));
     }
 
-    public function add_subcategroy(){
-        return view('admin.category.add_subcategory');
+    public function subcategroy(){
+        $subcategories = SubCategory::all();
+        return view('admin.category.subcategory', compact('subcategories'));
     }
+
+    public function subcategroy_store(Request $request){
+        $request->validate([
+            'category_id' => 'required',
+            'subcategory' => 'required',
+        ]);
+
+        SubCategory::insert([
+            'subcategory_name' => $request->subcategory,
+            'category_id' => $request->category_id,
+            'created_at' =>Carbon::now(),
+        ]);
+        return back()->withSuccess('SubCategory added successfully!');
+    }
+
 }
+

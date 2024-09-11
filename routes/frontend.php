@@ -1,8 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\AuthorControlController;
+
+
+// Frontend
+Route::get('/', [FrontendController::class, 'front_dashboard'])->name('front.dashboard');
+
 
 //Author
 Route::get('/front/login', [AuthorController::class, 'front_login'])->name('front.login');

@@ -5,7 +5,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h3 class="text-white text-center">Edit Profile</h3>
+                    <h3 class="text-white text-center">Edit Profile Info</h3>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('profile.update') }}" method="POST">
@@ -17,6 +17,9 @@
                         <div class="mb-3">
                             <label class="form-label">Email</label>
                             <input type="text" name="email" value="{{ Auth::user()->email }}" class="form-control">
+                            @error('email')
+                                <strong class="text-danger">{{ $message }}</strong>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Update</button>
@@ -28,16 +31,19 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h3 class="text-white text-center">Edit Profile</h3>
+                    <h3 class="text-white text-center">Edit Image</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('profile.update') }}" method="POST">
+                    <form action="{{ route('profile.update.image') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label">Upload Image</label>
-                            <input type="file" name="name" class="form-control"
+                            <input type="file" name="image" class="form-control"
                                 onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
-                            <img src="" id="img" width="200" class="rounded mt-2">
+                            <img src="{{ Auth::user()->image != null ? asset('uploads/users/'.Auth::user()->image):'' }}" id="img" width="200" class="rounded mt-2">
+                            @error('image')
+                                <strong class="text-danger">{{ $message }}</strong>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Update</button>

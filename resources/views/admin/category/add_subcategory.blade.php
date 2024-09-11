@@ -9,11 +9,29 @@
                 <h3 class="text-center text-white">Add SubCategory</h3>
             </div>
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('subcategory.store') }}" method="POST">
                     @csrf
+
+                    <div class="mb-3">
+                        <label class="form-label">Select Category</label>
+                        <select name="category_id" id="">
+                            <option value="" readonly>Select category</option>
+                            @forelse ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                            @empty
+                            <option readonly>No category found</option>
+                            @endforelse
+                        </select>
+                        @error('category')
+                            <strong class="text-danger">{{ $message }}</strong>
+                        @enderror
+                    </div>
                     <div class="mb-3">
                         <label class="form-label">SubCategory name</label>
-                        <input type="text" name="category" class="form-control">
+                        <input type="text" name="subcategory" class="form-control">
+                        @error('subcategory')
+                            <strong class="text-danger">{{ $message }}</strong>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Add</button>
