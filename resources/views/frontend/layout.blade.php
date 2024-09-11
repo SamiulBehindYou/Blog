@@ -9,20 +9,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- favicon -->
-    <link rel="icon" sizes="16x16" href="{{ asset('fontend') }}/img/favicon.png">
+    <link rel="icon" sizes="16x16" href="{{ asset('frontend') }}/img/favicon.png">
 
     <!-- Title -->Stay Connected
     <title> SAMIUL - Personal Blog HTML Template </title>
 
     <!-- CSS Plugins -->
-    <link rel="stylesheet" href="{{ asset('fontend') }}/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('fontend') }}/css/owl.carousel.css">
-    <link rel="stylesheet" href="{{ asset('fontend') }}/css/line-awesome.min.css">
-    <link rel="stylesheet" href="{{ asset('fontend') }}/css/fontawesome.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/css/owl.carousel.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/css/line-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/css/frontawesome.css">
 
     <!-- main style -->
-    <link rel="stylesheet" href="{{ asset('fontend') }}/css/style.css">
-    <link rel="stylesheet" href="{{ asset('fontend') }}/css/custom.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/css/custom.css">
 </head>
 
 <body>
@@ -38,8 +38,8 @@
                 <!--logo-->
                 <div class="logo">
                     <a href="index.html">
-                        <img src="{{ asset('fontend') }}/img/logo/logo-dark.png" alt="" class="logo-dark">
-                        <img src="{{ asset('fontend') }}/img/logo/logo-white.png" alt="" class="logo-white">
+                        <img src="{{ asset('frontend') }}/img/logo/logo-dark.png" alt="" class="logo-dark">
+                        <img src="{{ asset('frontend') }}/img/logo/logo-white.png" alt="" class="logo-white">
                     </a>
                 </div>
                 <div class="header-navbar">
@@ -53,9 +53,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="blog.html"> Blogs </a>
                                 </li>
+                                @auth('author')
                                 <li class="nav-item">
                                     <a class="nav-link" href="author.html"> Authors </a>
                                 </li>
+                                @endauth
                                 <li class="nav-item">
                                     <a class="nav-link" href="about.html"> About </a>
                                 </li>
@@ -86,9 +88,22 @@
                         <i class="las la-search"></i>
                     </div>
                     <!--button-subscribe-->
+                    @auth('author')
+                    <div class="dropdown">
+                        <button class="btn btn-subscribe " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          {{ Auth::guard('author')->user()->name }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="{{ route('author.control') }}">Author Controls</a>
+                          <a class="dropdown-item" href="{{ route('author.logout') }}">Logout</a>
+                        </div>
+                      </div>
+                    @else
                     <div class="botton-sub">
-                        <a href="{{ route('font.login') }}" class="btn-subscribe">Sign In</a>
+                        <a href="{{ route('front.login') }}" class="btn-subscribe">Sign In</a>
                     </div>
+                    @endauth
+
                     <!--navbar-toggler-->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -200,21 +215,21 @@
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="{{ asset('fontend') }}/js/jquery.min.js"></script>
-    <script src="{{ asset('fontend') }}/js/popper.min.js"></script>
-    <script src="{{ asset('fontend') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('frontend') }}/js/jquery.min.js"></script>
+    <script src="{{ asset('frontend') }}/js/popper.min.js"></script>
+    <script src="{{ asset('frontend') }}/js/bootstrap.min.js"></script>
 
 
     <!-- JS Plugins  -->
-    <script src="{{ asset('fontend') }}/js/theia-sticky-sidebar.js"></script>
-    <script src="{{ asset('fontend') }}/js/ajax-contact.js"></script>
-    <script src="{{ asset('fontend') }}/js/owl.carousel.min.js"></script>
-    <script src="{{ asset('fontend') }}/js/switch.js"></script>
-    <script src="{{ asset('fontend') }}/js/jquery.marquee.js"></script>
+    <script src="{{ asset('frontend') }}/js/theia-sticky-sidebar.js"></script>
+    <script src="{{ asset('frontend') }}/js/ajax-contact.js"></script>
+    <script src="{{ asset('frontend') }}/js/owl.carousel.min.js"></script>
+    <script src="{{ asset('frontend') }}/js/switch.js"></script>
+    <script src="{{ asset('frontend') }}/js/jquery.marquee.js"></script>
 
 
     <!-- JS main  -->
-    <script src="{{ asset('fontend') }}/js/main.js"></script>
+    <script src="{{ asset('frontend') }}/js/main.js"></script>
 
     {{-- Sweet Alert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -233,10 +248,10 @@
     <script>
         Swal.fire({
         position: "center",
-        icon: "success",
+        icon: "error",
         title: "{{ session('errors') }}",
         showConfirmButton: false,
-        timer: 1500
+        timer: 3500
         });
     </script>
     @endif
@@ -246,6 +261,15 @@
         position: "center",
         icon: "success",
         title: "{{ session('registration') }}",
+        });
+    </script>
+    @endif
+    @if (session('info'))
+    <script>
+        Swal.fire({
+        position: "center",
+        icon: "info",
+        title: "{{ session('info') }}",
         });
     </script>
     @endif

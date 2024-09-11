@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AuthorActiveMail;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Author;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 
 class DashboardController extends Controller
@@ -25,6 +27,9 @@ class DashboardController extends Controller
         if($author->status == 0){
             $author->status = 1;
             $author->save();
+            $subject = 'Congratulations';
+            $message = 'Account activated!';
+            Mail::to($author->email)->send(new AuthorActiveMail($subject, $message));
         }
         else{
             $author->status = 0;

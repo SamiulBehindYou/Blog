@@ -1,4 +1,4 @@
-@extends('fontend.layout')
+@extends('frontend.layout')
 @section('main')
     <!--Login-->
     <section class="login">
@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <button type="submit" class="btn-custom">Sign Up</button>
                             </div>
-                            <p class="form-group text-center">Already have an account? <a href="{{ route('font.login') }}" class="btn-link">Login</a> </p>
+                            <p class="form-group text-center">Already have an account? <a href="{{ route('front.login') }}" class="btn-link">Login</a> </p>
                         </form>
                            <!--/-->
                     </div>

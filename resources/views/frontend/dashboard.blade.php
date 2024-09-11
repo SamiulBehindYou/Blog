@@ -1,4 +1,4 @@
-@extends('fontend.layout')
+@extends('frontend.layout')
 
 @section('main')
 
@@ -9,7 +9,7 @@
                 <div class="col-lg-12">
                     <div class="owl-carousel">
                         <!--post1-->
-                        <div class="blog-item" style="background-image: url('{{ asset('fontend') }}/img/blog/bg1.jpg')">
+                        <div class="blog-item" style="background-image: url('{{ asset('frontend') }}/img/blog/bg1.jpg')">
                             <div class="blog-banner">
                                 <div class="post-overly">
                                     <div class="post-overly-content">
@@ -31,7 +31,7 @@
                         </div>
 
                         <!--post2-->
-                        <div class="blog-item" style="background-image: url('{{ asset('fontend') }}/img/blog/bg2.jpg')">
+                        <div class="blog-item" style="background-image: url('{{ asset('frontend') }}/img/blog/bg2.jpg')">
                             <div class="blog-banner">
                                 <div class="post-overly">
                                     <div class="post-overly-content">
@@ -53,7 +53,7 @@
                         </div>
 
                         <!--post3-->
-                        <div class="blog-item" style="background-image: url('{{ asset('fontend') }}/img/blog/bg3.jpg')">
+                        <div class="blog-item" style="background-image: url('{{ asset('frontend') }}/img/blog/bg3.jpg')">
                             <div class="blog-banner">
                                 <div class="post-overly">
                                     <div class="post-overly-content">
@@ -89,69 +89,69 @@
                         <div class="categories-items">
                             <a class="category-item" href="#">
                                 <div class="image">
-                                    <img src="{{ asset('fontend') }}/img/categories/1.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/categories/1.jpg" alt="">
                                 </div>
                                 <p>Design <span>10</span> </p>
                             </a>
 
                             <a class="category-item" href="#">
                                 <div class="image">
-                                    <img src="{{ asset('fontend') }}/img/categories/2.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/categories/2.jpg" alt="">
                                 </div>
                                 <p>Branding <span>09</span></p>
                             </a>
 
                             <a class="category-item" href="#">
                                 <div class="image">
-                                    <img src="{{ asset('fontend') }}/img/categories/3.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/categories/3.jpg" alt="">
                                 </div>
                                 <p>marketing <span>11</span></p>
                             </a>
 
                             <a class="category-item" href="#">
                                 <div class="image">
-                                    <img src="{{ asset('fontend') }}/img/categories/4.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/categories/4.jpg" alt="">
                                 </div>
                                 <p>food <span>05</span></p>
                             </a>
 
                             <a class="category-item" href="#">
                                 <div class="image">
-                                    <img src="{{ asset('fontend') }}/img/categories/5.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/categories/5.jpg" alt="">
                                 </div>
                                 <p>technology <span>04</span></p>
                             </a>
 
                             <a class="category-item" href="#">
                                 <div class="image">
-                                    <img src="{{ asset('fontend') }}/img/categories/6.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/categories/6.jpg" alt="">
                                 </div>
                                 <p>fashion <span>03</span></p>
                             </a>
 
                             <a class="category-item" href="#">
                                 <div class="image">
-                                    <img src="{{ asset('fontend') }}/img/categories/7.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/categories/7.jpg" alt="">
                                 </div>
                                 <p>mobile <span>10</span></p>
                             </a>
 
                             <a class="category-item" href="#">
                                 <div class="image">
-                                    <img src="{{ asset('fontend') }}/img/categories/8.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/categories/8.jpg" alt="">
                                 </div>
                                 <p>livestyle <span>08</span></p>
                             </a>
 
                             <a class="category-item" href="#">
                                 <div class="image">
-                                    <img src="{{ asset('fontend') }}/img/categories/9.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/categories/9.jpg" alt="">
                                 </div>
                                 <p>healty <span>11</span></p>
                             </a>
                             <a class="category-item" href="#">
                                 <div class="image">
-                                    <img src="{{ asset('fontend') }}/img/categories/10.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/categories/10.jpg" alt="">
                                 </div>
                                 <p>healty <span>06</span></p>
                             </a>
@@ -177,7 +177,7 @@
                         <div class="post-list post-list-style4">
                             <div class="post-list-image">
                                 <a href="post-single.html">
-                                    <img src="{{ asset('fontend') }}/img/blog/31.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/blog/31.jpg" alt="">
                                 </a>
                             </div>
                             <div class="post-list-content">
@@ -203,7 +203,7 @@
                         <div class="post-list post-list-style4">
                             <div class="post-list-image">
                                 <a href="post-single.html">
-                                    <img src="{{ asset('fontend') }}/img/blog/21.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/blog/21.jpg" alt="">
                                 </a>
                             </div>
                             <div class="post-list-content">
@@ -229,7 +229,7 @@
                         <div class="post-list post-list-style4">
                             <div class="post-list-image">
                                 <a href="post-single.html">
-                                    <img src="{{ asset('fontend') }}/img/blog/32.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/blog/32.jpg" alt="">
                                 </a>
                             </div>
                             <div class="post-list-content">
@@ -254,7 +254,7 @@
                         <div class="post-list post-list-style4">
                             <div class="post-list-image">
                                 <a href="post-single.html">
-                                    <img src="{{ asset('fontend') }}/img/blog/17.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/blog/17.jpg" alt="">
                                 </a>
                             </div>
                             <div class="post-list-content">
@@ -278,7 +278,7 @@
                         <div class="post-list post-list-style4">
                             <div class="post-list-image">
                                 <a href="post-single.html">
-                                    <img src="{{ asset('fontend') }}/img/blog/27.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/blog/27.jpg" alt="">
                                 </a>
                             </div>
                             <div class="post-list-content">
@@ -302,7 +302,7 @@
                         <div class="post-list post-list-style4">
                             <div class="post-list-image">
                                 <a href="post-single.html">
-                                    <img src="{{ asset('fontend') }}/img/blog/39.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/blog/39.jpg" alt="">
                                 </a>
                             </div>
                             <div class="post-list-content">
@@ -326,7 +326,7 @@
                         <div class="post-list post-list-style4">
                             <div class="post-list-image">
                                 <a href="post-single.html">
-                                    <img src="{{ asset('fontend') }}/img/blog/30.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/blog/30.jpg" alt="">
                                 </a>
                             </div>
                             <div class="post-list-content">
@@ -351,7 +351,7 @@
                         <div class="post-list post-list-style4">
                             <div class="post-list-image">
                                 <a href="post-single.html">
-                                    <img src="{{ asset('fontend') }}/img/blog/25.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/blog/25.jpg" alt="">
                                 </a>
                             </div>
                             <div class="post-list-content">
@@ -376,7 +376,7 @@
                         <div class="post-list post-list-style4">
                             <div class="post-list-image">
                                 <a href="post-single.html">
-                                    <img src="{{ asset('fontend') }}/img/blog/22.jpg" alt="">
+                                    <img src="{{ asset('frontend') }}/img/blog/22.jpg" alt="">
                                 </a>
                             </div>
                             <div class="post-list-content">
@@ -443,7 +443,7 @@
                                     <li class="small-post">
                                         <div class="small-post-image">
                                             <a href="post-single.html">
-                                                <img src="{{ asset('fontend') }}/img/blog/1.jpg" alt="">
+                                                <img src="{{ asset('frontend') }}/img/blog/1.jpg" alt="">
                                                 <small class="nb">1</small>
                                             </a>
                                         </div>
@@ -460,7 +460,7 @@
                                     <li class="small-post">
                                         <div class="small-post-image">
                                             <a href="post-single.html">
-                                                <img src="{{ asset('fontend') }}/img/blog/5.jpg" alt="">
+                                                <img src="{{ asset('frontend') }}/img/blog/5.jpg" alt="">
                                                 <small class="nb">2</small>
                                             </a>
                                         </div>
@@ -477,7 +477,7 @@
                                     <li class="small-post">
                                         <div class="small-post-image">
                                             <a href="post-single.html">
-                                                <img src="{{ asset('fontend') }}/img/blog/13.jpg" alt="">
+                                                <img src="{{ asset('frontend') }}/img/blog/13.jpg" alt="">
                                                 <small class="nb">3</small>
 
                                             </a>
@@ -495,7 +495,7 @@
                                     <li class="small-post">
                                         <div class="small-post-image">
                                             <a href="post-single.html">
-                                                <img src="{{ asset('fontend') }}/img/blog/16.jpg" alt="">
+                                                <img src="{{ asset('frontend') }}/img/blog/16.jpg" alt="">
                                                 <small class="nb">4</small>
                                             </a>
                                         </div>

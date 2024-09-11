@@ -1,23 +1,14 @@
 <?php
 
-use App\Http\Controllers\FontendController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
-// Fontend
-Route::get('/', [FontendController::class, 'font_dashboard'])->name('font.dashboard');
-Route::get('/font/login', [FontendController::class, 'font_login'])->name('font.login');
-Route::get('/font/register', [FontendController::class, 'font_register'])->name('font.register');
-Route::post('/author/store', [FontendController::class, 'author_store'])->name('author.store');
-Route::post('/author/login', [FontendController::class, 'author_login'])->name('author.login');
+// Frontend
+Route::get('/', [FrontendController::class, 'front_dashboard'])->name('front.dashboard');
 
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     //Profile
@@ -53,3 +44,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/frontend.php';
