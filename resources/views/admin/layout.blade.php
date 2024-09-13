@@ -333,11 +333,11 @@ License: You must have a valid license purchased only from above link or https:/
 							<div class="dropdown-menu" aria-labelledby="profileDropdown">
 								<div class="dropdown-header d-flex flex-column align-items-center">
 									<div class="figure mb-3">
-                                        @if(Auth::user()->image == null)
-                                        <img src="{{ asset('uploads/profile.jpg') }}" alt="profile">
-                                        @else
-                                        <img src="{{ asset('uploads/users/'.Auth::user()->image) }}" alt="profile">
-                                        @endif
+                                    @if(Auth::user()->image == null)
+                                    <img src="{{ asset('uploads/profile.jpg') }}" alt="profile">
+                                    @else
+                                    <img src="{{ asset('uploads/users/'.Auth::user()->image) }}" alt="profile">
+                                    @endif
 									</div>
 									<div class="info text-center">
 										<p class="name font-weight-bold mb-0">{{ Auth::user()->name }}</p>
