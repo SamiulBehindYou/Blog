@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Middleware\AuthorControl;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -11,7 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'author' => AuthorControl::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

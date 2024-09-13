@@ -17,7 +17,9 @@ Route::post('/author/store', [AuthorController::class, 'author_store'])->name('a
 Route::post('/author/login', [AuthorController::class, 'author_login'])->name('author.login');
 Route::get('/author/logout', [AuthorController::class, 'author_logout'])->name('author.logout');
 
-//Author Dashboard
-Route::get('/author/controls', [AuthorControlController::class, 'author_control'])->name('author.control');
-Route::get('/author/blog/create', [AuthorControlController::class, 'blog_create'])->name('blog.create');
-Route::get('/author/blogs', [AuthorControlController::class, 'blogs'])->name('blogs');
+Route::middleware('author')->group(function (){
+    //Author Dashboard
+    Route::get('/author/controls', [AuthorControlController::class, 'author_control'])->name('author.control');
+    Route::get('/author/blog/create', [AuthorControlController::class, 'blog_create'])->name('blog.create');
+    Route::get('/author/blogs', [AuthorControlController::class, 'blogs'])->name('blogs');
+});
