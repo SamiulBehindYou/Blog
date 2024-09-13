@@ -40,7 +40,9 @@ Route::middleware('auth')->group(function () {
     Route::get('sub_categroy', [CategoryController::class, 'subcategroy'])->name('subcategroy');
 
     //Tags
-    Route::get('add/tag', [TagController::class, 'add_tag'])->name('add.tag');
+    Route::get('tag/new', [TagController::class, 'add_tag'])->name('add.tag');
+    Route::post('tag/new', [TagController::class, 'store'])->name('tag.store');
     Route::get('tags', [TagController::class, 'tags'])->name('tags');
+    Route::get('tag/{id}', [TagController::class, 'tag_delete'])->name('tag.delete');
 
 });

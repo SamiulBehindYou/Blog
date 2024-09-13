@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -10,6 +12,24 @@ class TagController extends Controller
         return view('admin.tags.add_tag');
     }
     public function tags(){
-        return view('admin.tags.tags');
+        $tags = Tag::all();
+        return view('admin.tags.tags', compact('tags'));
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'tag' => 'required|regex:/^\S*$/u|regex:/^[a-zA-Z]+$/u|max:10|unique:tags',
+        ]);
+
+        Tag::insert([
+            'tag' => $request->tag,
+            'created_at' => Carbon::now(),
+        ]);
+        return back()->withSuccess('Tag added successfully!');
+    }
+
+    public function tag_delete($id){
+        Tag::find($id)->delete();
+        return back()->withInfo('Tag Deleted!');
     }
 }

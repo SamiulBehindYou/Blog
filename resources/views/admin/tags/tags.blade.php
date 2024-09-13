@@ -17,22 +17,21 @@
                         <th>Created on</th>
                         <th>Action</th>
                     </tr>
-                    {{-- @forelse ($categories as $sl=>$category)
+                    @forelse ($tags as $sl=>$tag)
                     <tr>
                         <td><input type="checkbox" name="selection"></td>
                         <td>{{ $sl+1 }}</td>
-                        <td>{{ $category->category_name }}</td>
-                        <td><img src="{{ asset('uploads/categories').'/'.$category->category_image }}" alt=""></td>
-                        <td>{{ $category->created_at }}</td>
+                        <td>{{ $tag->tag }}</td>
+                        <td>{{ $tag->created_at }}</td>
                         <td>
-                            <a href="{{ route('category.delete', $category->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ route('tag.delete', $tag->id) }}" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                     @empty
                     <tr>
                         <td colspan="6" class="text-center"><h3>No data to show</h3></td>
                     </tr>
-                    @endforelse --}}
+                    @endforelse
                 </table>
             </div>
         </div>

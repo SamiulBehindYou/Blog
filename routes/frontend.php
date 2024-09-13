@@ -7,7 +7,7 @@ use App\Http\Controllers\AuthorControlController;
 
 
 // Frontend
-Route::get('/', [FrontendController::class, 'front_dashboard'])->name('front.dashboard');
+Route::get('/', [FrontendController::class, 'front_dashboard'])->name('front.dashboard'); //landing page
 
 
 //Author
@@ -18,7 +18,7 @@ Route::post('/author/login', [AuthorController::class, 'author_login'])->name('a
 Route::get('/author/logout', [AuthorController::class, 'author_logout'])->name('author.logout');
 
 Route::middleware('author')->group(function (){
-    //Author Dashboard
+    //Author Dashboard/Controls
     Route::get('/author/controls', [AuthorControlController::class, 'author_control'])->name('author.control');
     Route::get('/author/blog/create', [AuthorControlController::class, 'blog_create'])->name('blog.create');
     Route::get('/author/blogs', [AuthorControlController::class, 'blogs'])->name('blogs');

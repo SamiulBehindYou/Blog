@@ -422,5 +422,16 @@ License: You must have a valid license purchased only from above link or https:/
         });
     </script>
     @endif
+    @if (session('info'))
+    <script>
+        Swal.fire({
+        position: "center",
+        icon: "info",
+        title: "{{ session('info') }}",
+        showConfirmButton: false,
+        timer: 1500
+        });
+    </script>
+    @endif
 </body>
 </html>
