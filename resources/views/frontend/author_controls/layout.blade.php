@@ -69,32 +69,16 @@ License: You must have a valid license purchased only from above link or https:/
                   <a href="{{ route('blogs') }}" class="nav-link">Blogs</a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">Trash</a>
+                  <a href="{{ route('author.blog.trash') }}" class="nav-link">Trash</a>
                 </li>
               </ul>
             </div>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#subcategory" role="button" aria-expanded="false" aria-controls="subcategory">
-              <i class="link-icon" data-feather="pocket"></i>
-              <span class="link-title">Sub Category</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse" id="subcategory">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="" class="nav-link">Add SubCategory</a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link">SubCategory</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a href="pages/apps/calendar.html" class="nav-link">
-              <i class="link-icon" data-feather="calendar"></i>
-              <span class="link-title">Calendar</span>
+            <a href="" class="nav-link">
+              <i class="link-icon" data-feather="message-circle"></i>
+              <span class="link-title">Message Admin</span>
             </a>
           </li>
 
@@ -421,5 +405,7 @@ License: You must have a valid license purchased only from above link or https:/
         });
     </script>
     @endif
+
+    @yield('footer')
 </body>
 </html>

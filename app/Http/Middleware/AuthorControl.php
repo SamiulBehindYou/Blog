@@ -19,6 +19,6 @@ class AuthorControl
         if(Auth::guard('author')->check()){
             return $next($request);
         }
-        abort(401);
+        return redirect()->route('front.login')->withErrors('Unauthorize access!');
     }
 }
