@@ -83,11 +83,11 @@ class CategoryController extends Controller
     public function subcategroy_store(Request $request){
         $request->validate([
             'category_id' => 'required',
-            'subcategory' => 'required',
+            'subcategory_name' => 'required|unique:sub_categories',
         ]);
 
         SubCategory::insert([
-            'subcategory_name' => $request->subcategory,
+            'subcategory_name' => $request->subcategory_name,
             'category_id' => $request->category_id,
             'created_at' =>Carbon::now(),
         ]);

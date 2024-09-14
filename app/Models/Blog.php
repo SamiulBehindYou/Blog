@@ -10,4 +10,5 @@ class Blog extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $fillable = ['status'];
 }

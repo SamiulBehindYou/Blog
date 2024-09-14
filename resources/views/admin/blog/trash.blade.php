@@ -1,4 +1,4 @@
-@extends('frontend.author_controls.layout')
+@extends('admin.layout')
 
 @section('main')
 
@@ -34,7 +34,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('author.blog.restore', $blog->id) }}" class="btn btn-success btn-sm">Restore</a>
+                            <a href="{{ route('category.delete', $blog->id) }}" class="btn btn-success btn-sm">Restore</a>
                             <a href="{{ route('author.blog.hard.delete', $blog->id) }}" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>

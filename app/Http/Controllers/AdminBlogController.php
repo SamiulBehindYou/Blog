@@ -2,30 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SubCategory;
 use App\Models\Blog;
-use Carbon\Carbon;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
-use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
-
-class AuthorControlController extends Controller
+class AdminBlogController extends Controller
 {
-    public function author_control(){
-        return view('frontend.author_controls.dashboard');
-    }
-    public function blog_create(){
+    public function create(){
         $subcategories = SubCategory::all();
-        return view('frontend.author_controls.blog.create', compact('subcategories'));
+        return view('admin.blog.create', compact('subcategories'));
     }
-    public function blogs(){
-        $blogs = Blog::where('author_id', Auth::guard('author')->user()->id)->get();
-        return view('frontend.author_controls.blog.blogs', compact('blogs'));
-    }
-
-    public function createpost(Request $request){
+    public function store(Request $request){
         $request->validate([
             'sub_category' => 'required',
             'title' => 'required',
@@ -57,26 +47,41 @@ class AuthorControlController extends Controller
             'read_time' => $request->readtime,
             'subcategory_id' => $request->sub_category,
             'created_at' => Carbon::now(),
+            'status' => 1,
         ]);
 
-        return back()->withSuccess('Blog post pending for admin approval.');
+        return back()->withSuccess('Blog posted successfully!');
     }
-
-    public function blog_edit($id){
-        //
+    public function view_adminblogs(){
+        $blogs = Blog::where('author_id', 0)->get();
+        return view('admin.blog.admin_blogs', compact('blogs'));
     }
-    public function blog_delete($id){
-        Blog::find($id)->delete();
-        return back()->withSuccess('Blog move to trash!');
+    public function view_blogs(){
+        $blogs = Blog::all();
+        return view('admin.blog.blogs', compact('blogs'));
     }
-
     public function view_trash(){
-        $blogs = Blog::onlyTrashed()->where('author_id', Auth::guard('author')->user()->id)->get();
-        return view('frontend.author_controls.blog.trash', compact('blogs'));
+        $blogs = Blog::onlyTrashed()->get();
+        return view('admin.blog.trash', compact('blogs'));
     }
 
-    public function restore($id){
-        Blog::onlyTrashed()->find($id)->restore();
-        return back()->withSuccess('Blog restored successfully!');  
+    public function review(){
+        $blogs = Blog::whereNot('author_id', 0)->where('status', 0)->get();
+        return view('admin.blog.review', compact('blogs'));
+    }
+
+    public function approve($id){
+        $blog = Blog::find($id);
+        $blog->status = 1;
+        $blog->visibility = 1;
+        $blog->save();
+        return back()->withSuccess('Blog approved successfully!');
+    }
+    public function reject($id){
+        $blog = Blog::find($id);
+        $blog->status = 2;
+        $blog->visibility = 0;
+        $blog->save();
+        return back()->withInfo('Blog rejected!');
     }
 }

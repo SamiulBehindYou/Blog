@@ -63,10 +63,10 @@ License: You must have a valid license purchased only from above link or https:/
             <div class="collapse" id="category">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{ route('blog.create') }}" class="nav-link">Create Blog</a>
+                  <a href="{{ route('author.blog.create') }}" class="nav-link">Create Blog</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('blogs') }}" class="nav-link">Blogs</a>
+                  <a href="{{ route('author.blogs') }}" class="nav-link">Blogs</a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('author.blog.trash') }}" class="nav-link">Trash</a>
@@ -74,11 +74,24 @@ License: You must have a valid license purchased only from above link or https:/
               </ul>
             </div>
           </li>
-
+          <li class="nav-item nav-category">Communication</li>
           <li class="nav-item">
             <a href="" class="nav-link">
-              <i class="link-icon" data-feather="message-circle"></i>
+              <i class="link-icon" data-feather="volume-2"></i>
+              <span class="link-title">Announcement</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="link-icon" data-feather="message-square"></i>
               <span class="link-title">Message Admin</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">Management</li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="link-icon" data-feather="tool"></i>
+              <span class="link-title">Settings</span>
             </a>
           </li>
 

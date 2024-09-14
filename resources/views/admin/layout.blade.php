@@ -121,6 +121,69 @@ License: You must have a valid license purchased only from above link or https:/
             </div>
           </li>
 
+          <li class="nav-item nav-category">Manage blogs</li>
+          <li class="nav-item">
+            <a href="{{ route('blog.review') }}" class="nav-link">
+              <i class="link-icon" data-feather="eye"></i>
+              <span class="link-title">Review post</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('blogs') }}" class="nav-link">
+              <i class="link-icon" data-feather="image"></i>
+              <span class="link-title">Blogs</span>
+            </a>
+          </li>
+
+          <li class="nav-item nav-category">Admin post</li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#blog" role="button" aria-expanded="false" aria-controls="blog">
+              <i class="link-icon" data-feather="layers"></i>
+              <span class="link-title">Blogs</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="blog">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{ route('blog.create') }}" class="nav-link">Create Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('adminblogs') }}" class="nav-link">Admin Blogs</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('blog.trash') }}" class="nav-link">Trash</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item nav-category">Communication</li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="link-icon" data-feather="volume-2"></i>
+              <span class="link-title">Announcement</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title">Author's messages</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">Management</li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="link-icon" data-feather="tool"></i>
+              <span class="link-title">Settings</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="link-icon" data-feather="shield"></i>
+              <span class="link-title">Permissions</span>
+            </a>
+          </li>
+
+
         </ul>
       </div>
     </nav>

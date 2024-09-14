@@ -95,7 +95,12 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <a class="dropdown-item" href="{{ route('author.control') }}">Author Controls</a>
-                          <a class="dropdown-item" href="{{ route('author.logout') }}">Logout</a>
+                          <form method="POST" action="{{ route('author.logout') }}">
+                            @csrf
+                            <div class="pl-4">
+                                <button type="submit" class="btn text-danger m-0 p-0">Log Out</button>
+                            </div>
+                            </form>
                         </div>
                       </div>
                     @else

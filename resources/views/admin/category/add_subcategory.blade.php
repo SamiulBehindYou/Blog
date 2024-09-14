@@ -22,14 +22,14 @@
                             <option readonly>No category found</option>
                             @endforelse
                         </select>
-                        @error('category')
+                        @error('category_id')
                             <strong class="text-danger">{{ $message }}</strong>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label">SubCategory name</label>
-                        <input type="text" name="subcategory" class="form-control">
-                        @error('subcategory')
+                        <input type="text" name="subcategory_name" class="form-control">
+                        @error('subcategory_name')
                             <strong class="text-danger">{{ $message }}</strong>
                         @enderror
                     </div>

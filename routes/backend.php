@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
@@ -44,5 +45,16 @@ Route::middleware('auth')->group(function () {
     Route::post('tag/new', [TagController::class, 'store'])->name('tag.store');
     Route::get('tags', [TagController::class, 'tags'])->name('tags');
     Route::get('tag/{id}', [TagController::class, 'tag_delete'])->name('tag.delete');
+
+    //Blogs
+    Route::get('admin/blog/new', [AdminBlogController::class, 'create'])->name('blog.create');
+    Route::post('admin/blog/new', [AdminBlogController::class, 'store'])->name('blog.new');
+    Route::get('admin/adminblog', [AdminBlogController::class, 'view_adminblogs'])->name('adminblogs');
+    Route::get('admin/blogs', [AdminBlogController::class, 'view_blogs'])->name('blogs');
+    Route::get('admin/blog/trash', [AdminBlogController::class, 'view_trash'])->name('blog.trash');
+    Route::get('admin/blog/reveiw', [AdminBlogController::class, 'review'])->name('blog.review');
+    Route::get('admin/blog/approve/{id}', [AdminBlogController::class, 'approve'])->name('blog.approve');
+    Route::get('admin/blog/reject/{id}', [AdminBlogController::class, 'reject'])->name('blog.reject');
+
 
 });

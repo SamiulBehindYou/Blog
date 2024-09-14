@@ -1,4 +1,4 @@
-@extends('frontend.author_controls.layout')
+@extends('admin.layout')
 
 @section('main')
 
@@ -6,7 +6,7 @@
     <div class="col-md-10 m-auto">
         <div class="card">
             <div class="card-header bg-primary">
-                <h3 class="text-white text-center">Blog Trash</h3>
+                <h3 class="text-white text-center">Blogs</h3>
             </div>
             <div class="card-body">
                 <table class="table table-bordered text-center">
@@ -16,6 +16,7 @@
                         <th>Title</th>
                         <th>Image</th>
                         <th>Posted</th>
+                        <th>Visibility</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -28,14 +29,24 @@
                         <td>{{ $blog->created_at }}</td>
                         <td>
                             @if ($blog->status == 0)
+                                <div class="text-danger">Not Visible</div>
+                            @else
+                                @if ($blog->visibility == 0)
+                                    <div class="text-info">Private</div>
+                                @else
+                                    <div class="text-info">Public</div>
+                                @endif
+                            @endif
+                        </td>
+                        <td>
+                            @if ($blog->status == 0)
                                 <div class="text-danger">Not approved</div>
                             @else
                                 <div class="text-success">Approved</div>
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('author.blog.restore', $blog->id) }}" class="btn btn-success btn-sm">Restore</a>
-                            <a href="{{ route('author.blog.hard.delete', $blog->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ route('author.blog.delete', $blog->id) }}" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                     @empty
