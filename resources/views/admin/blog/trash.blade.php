@@ -34,8 +34,8 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('category.delete', $blog->id) }}" class="btn btn-success btn-sm">Restore</a>
-                            <a href="{{ route('author.blog.hard.delete', $blog->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ route('admin.blog.restore', $blog->id) }}" class="btn btn-success btn-sm">Restore</a>
+                            <a href="{{ route('admin.blog.hard.delete', $blog->id) }}" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                     @empty

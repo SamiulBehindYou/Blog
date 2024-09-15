@@ -158,7 +158,7 @@ License: You must have a valid license purchased only from above link or https:/
           </li>
           <li class="nav-item nav-category">Communication</li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('admin.announcement') }}" class="nav-link">
               <i class="link-icon" data-feather="volume-2"></i>
               <span class="link-title">Announcement</span>
             </a>

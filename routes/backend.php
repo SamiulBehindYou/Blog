@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminBlogController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
@@ -51,11 +52,19 @@ Route::middleware('auth')->group(function () {
     Route::post('admin/blog/new', [AdminBlogController::class, 'store'])->name('blog.new');
     Route::get('admin/adminblog', [AdminBlogController::class, 'view_adminblogs'])->name('adminblogs');
     Route::get('admin/blogs', [AdminBlogController::class, 'view_blogs'])->name('blogs');
-    Route::get('admin/blog/trash', [AdminBlogController::class, 'view_trash'])->name('blog.trash');
     Route::get('admin/blog/reveiw', [AdminBlogController::class, 'review'])->name('blog.review');
     Route::get('admin/blog/approve/{id}', [AdminBlogController::class, 'approve'])->name('blog.approve');
     Route::get('admin/blog/reject/{id}', [AdminBlogController::class, 'reject'])->name('blog.reject');
     Route::get('admin/blog/hard/{id}', [AdminBlogController::class, 'blog_delete'])->name('blog.delete');
+    Route::get('admin/blog/edit/{id}', [AdminBlogController::class, 'blog_edit'])->name('admin.blog.edit');
+    Route::get('admin/blog/visibility/{id}', [AdminBlogController::class, 'visibility'])->name('admin.blog.visibility');
+    Route::post('admin/blog/update/', [AdminBlogController::class, 'update'])->name('admin.blog.update');
+    Route::get('admin/blog/delete/{id}', [AdminBlogController::class, 'delete'])->name('admin.blog.delete');
+    Route::get('admin/blog/trash', [AdminBlogController::class, 'view_trash'])->name('blog.trash');
+    Route::get('admin/blog/restore/{id}', [AdminBlogController::class, 'restore'])->name('admin.blog.restore');
+    Route::get('admin/blog/hard/{id}', [AdminBlogController::class, 'hard_delete'])->name('admin.blog.hard.delete');
 
+    // Announcement
+    Route::get('announcement', [AnnouncementController::class, 'announcement'])->name('admin.announcement');
 
 });

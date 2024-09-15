@@ -30,27 +30,19 @@
                             @if ($blog->status == 0)
                                 <div class="text-danger">Not Visible</div>
                             @else
-                                @if ($blog->visibility == 0)
-                                    <div class="text-info">Private</div>
-                                @else
-                                    <div class="text-info">Public</div>
-                                @endif
+                                <div class="text-{{ $blog->visibility == 0 ? 'success':'danger' }}">{{ $blog->visibility == 0 ? 'Private':'Public' }}</div>
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('author.blog.edit', $blog->id) }}" class="badge badge-primary">
+                            <a href="{{ route('admin.blog.edit', $blog->id) }}" class="badge badge-primary">
                                 <i class="link-icon" data-feather="edit"></i>
                             </a>
-                            @if ($blog->visibility == 0)
-                            <a href="{{ route('author.blog.delete', $blog->id) }}" class="badge badge-success">
-                                <i class="link-icon" data-feather="eye"></i>
+
+                            <a href="{{ route('admin.blog.visibility', $blog->id) }}" class="badge badge-{{ $blog->visibility == 0 ? 'success':'danger' }}">
+                                <i class="link-icon" data-feather="eye{{ $blog->visibility == 0 ? '':'-off' }}"></i>
                             </a>
-                            @else
-                            <a href="{{ route('author.blog.delete', $blog->id) }}" class="badge badge-danger">
-                                <i class="link-icon" data-feather="eye-off"></i>
-                            </a>
-                            @endif
-                            <a href="{{ route('author.blog.delete', $blog->id) }}" class="badge badge-danger">
+
+                            <a href="{{ route('admin.blog.delete', $blog->id) }}" class="badge badge-danger">
                                 <i class="link-icon" data-feather="trash-2"></i>
                             </a>
                         </td>

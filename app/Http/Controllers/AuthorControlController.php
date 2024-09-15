@@ -77,6 +77,11 @@ class AuthorControlController extends Controller
 
     public function restore($id){
         Blog::onlyTrashed()->find($id)->restore();
-        return back()->withSuccess('Blog restored successfully!');  
+        return back()->withSuccess('Blog restored successfully!');
+    }
+
+    public function hard_delete($id){
+        Blog::onlyTrashed()->find($id)->forceDelete();
+        return back()->withInfo('Blog permanatly deleted!');
     }
 }
