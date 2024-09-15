@@ -46,7 +46,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('author.blog.delete', $blog->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ route('blog.delete', $blog->id) }}" class="badge badge-danger"><i class="link-icon" data-feather="trash-2"></i></a>
                         </td>
                     </tr>
                     @empty

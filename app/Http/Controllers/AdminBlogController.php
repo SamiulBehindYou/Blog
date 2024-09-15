@@ -84,4 +84,9 @@ class AdminBlogController extends Controller
         $blog->save();
         return back()->withInfo('Blog rejected!');
     }
+
+    public function blog_delete($id){
+        Blog::find($id)->forceDelete();
+        return back()->withSuccess('Blog deleted successfully!');
+    }
 }

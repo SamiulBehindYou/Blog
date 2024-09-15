@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/blog/reveiw', [AdminBlogController::class, 'review'])->name('blog.review');
     Route::get('admin/blog/approve/{id}', [AdminBlogController::class, 'approve'])->name('blog.approve');
     Route::get('admin/blog/reject/{id}', [AdminBlogController::class, 'reject'])->name('blog.reject');
+    Route::get('admin/blog/hard/{id}', [AdminBlogController::class, 'blog_delete'])->name('blog.delete');
 
 
 });
