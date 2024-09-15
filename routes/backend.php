@@ -66,5 +66,7 @@ Route::middleware('auth')->group(function () {
 
     // Announcement
     Route::get('announcement', [AnnouncementController::class, 'announcement'])->name('admin.announcement');
+    Route::post('announcement/store', [AnnouncementController::class, 'store'])->name('admin.announce.store');
+    Route::get('announcement/delete/{id}', [AnnouncementController::class, 'delete'])->name('admin.announce.delete');
 
 });

@@ -3,47 +3,69 @@
 @section('main')
 
 <div class="row">
-    <div class="col-md-9 m-auto">
+    <div class="col-md-7">
         <div class="card">
             <div class="card-header bg-primary">
-                <h3 class="text-white text-center">Authors Table</h3>
+                <h3 class="text-white text-center">Announcements Table</h3>
             </div>
             <div class="card-body">
                 <table class="table text-center">
                     <tr>
                         <th>SL</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Photo</th>
-                        <th>Status</th>
+                        <th>Subject</th>
+                        <th>Description</th>
+                        <th>Importance</th>
                         <th>Action</th>
                     </tr>
-                    {{-- @foreach ($authors as $sl=>$author)
+                    @foreach ($announcements as $sl=>$announce)
 
                     <tr>
                         <td>{{ $sl+1 }}</td>
-                        <td>{{ $author->name }}</td>
-                        <td>{{ $author->email }}</td>
+                        <td>{{ $announce->title }}</td>
+                        <td>{{ $announce->description }}</td>
+                        <td>{{ $announce->importance }}</td>
                         <td>
-                            @if ($author->image == null)
-                                No Photo
-                            @else
-                                <img src="{{ asset('uploads/authors/').'/'.$author->image }}" >
-                            @endif
-                        </td>
-                        <td>
-                            @if ( $author->status == 1)
-                            <a href="{{ route('author.status', $author->id) }}" class="btn btn-outline-success btn-sm">Active</a>
-                            @else
-                            <a href="{{ route('author.status', $author->id) }}" class="btn btn-outline-danger btn-sm">Not Active</a>
-                            @endif
-                        </td>
-                        <td>
-                            <a href="{{ route('author.delete', $author->id) }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                            <a href="{{ route('admin.announce.delete', $announce->id) }}" class="btn btn-outline-danger btn-sm">Delete</a>
                         </td>
                     </tr>
-                    @endforeach --}}
+                    @endforeach
                 </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h1 class="text-center text-white">New announce</h1>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('admin.announce.store') }}" method="post">
+                    @csrf
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        <input type="text" name="title" class="form-control">
+                        @error('title')
+                            <strong class="text-danger">{{ $message }}</strong>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea name="description" rows="5" class="form-control"></textarea>
+                        @error('description')
+                            <strong class="text-danger">{{ $message }}</strong>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Importance level (%)</label>
+                        <input type="number" name="importance" class="form-control">
+                        @error('importance')
+                            <strong class="text-danger">{{ $message }}</strong>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary" type="submit">Announce</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

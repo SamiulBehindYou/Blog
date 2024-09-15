@@ -23,7 +23,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * The attributxes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
