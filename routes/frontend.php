@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\AuthorControlController;
-
+use App\Http\Controllers\AuthorMessageController;
 
 // Frontend
 Route::get('/', [FrontendController::class, 'front_dashboard'])->name('front.dashboard'); //landing page
@@ -30,4 +30,13 @@ Route::middleware('author')->group(function (){
     Route::get('/author/blog/trash', [AuthorControlController::class, 'view_trash'])->name('author.blog.trash');
     Route::get('/author/blogs/trash/re/{id}', [AuthorControlController::class, 'restore'])->name('author.blog.restore');
     Route::get('/author/blogs/trash/{id}', [AuthorControlController::class, 'hard_delete'])->name('author.blog.hard.delete');
+
+    // Announcement
+    Route::get('author/announcement/', [AuthorControlController::class, 'announcement'])->name('author.announcement');
+
+    // Messages
+    Route::get('author/messages/', [AuthorMessageController::class, 'messages'])->name('author.messages');
+    Route::post('author/messages/store', [AuthorMessageController::class, 'store'])->name('author.message.store');
+    Route::get('author/messages/delete', [AuthorMessageController::class, 'delete'])->name('author.message.delete');
+
 });

@@ -88,7 +88,7 @@ License: You must have a valid license purchased only from above link or https:/
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#subcategory" role="button" aria-expanded="false" aria-controls="subcategory">
-              <i class="link-icon" data-feather="pocket"></i>
+              <i class="link-icon" data-feather="git-pull-request"></i>
               <span class="link-title">Sub Categories</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>

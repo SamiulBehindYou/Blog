@@ -17,7 +17,7 @@
                         <th>Importance</th>
                         <th>Action</th>
                     </tr>
-                    @foreach ($announcements as $sl=>$announce)
+                    @forelse ($announcements as $sl=>$announce)
 
                     <tr>
                         <td>{{ $sl+1 }}</td>
@@ -28,7 +28,11 @@
                             <a href="{{ route('admin.announce.delete', $announce->id) }}" class="btn btn-outline-danger btn-sm">Delete</a>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="5"><div class="text-danger"><i data-feather="bell-off"></i></div><h3>No Annoucements</h3></td>
+                    </tr>
+                    @endforelse
                 </table>
             </div>
         </div>

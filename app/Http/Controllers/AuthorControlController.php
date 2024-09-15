@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\SubCategory;
+use App\Models\Announcement;
 use App\Models\Blog;
+use App\Models\Message;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
@@ -84,4 +86,12 @@ class AuthorControlController extends Controller
         Blog::onlyTrashed()->find($id)->forceDelete();
         return back()->withInfo('Blog permanatly deleted!');
     }
+
+
+    // Annoucement
+    public function announcement(){
+        $announcements = Announcement::orderBy('id', 'DESC')->get();
+        return view('frontend.author_controls.communication.announcement', compact('announcements'));
+    }
+
 }
