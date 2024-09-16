@@ -21,8 +21,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $annouces = Announcement::all();
-        $d = ['1', '2', '3'];
-        View::share('key', $d);
+        $annouces = Announcement::orderBy('id', 'DESC')->limit(5)->get();
+        if($annouces->count() > 0){
+            $data = array();
+            foreach($annouces as $annouce){
+                array_push($data, $annouce->title);
+            }
+
+
+            View::share('key', $data);
+        }
     }
 }

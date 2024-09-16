@@ -79,11 +79,9 @@ License: You must have a valid license purchased only from above link or https:/
             <a href="{{ route('author.announcement') }}" class="nav-link">
                 <i class="link-icon" data-feather="volume-2"></i>
                 <span class="link-title">Announcement</span>
-                @forelse ($key as $announce)
+                @if (isset($key))
                 <div class="text-danger">*</div>
-                @empty
-
-                @endforelse
+                @endif
             </a>
           </li>
           <li class="nav-item">
@@ -183,13 +181,11 @@ License: You must have a valid license purchased only from above link or https:/
 						<li class="nav-item dropdown nav-notifications">
 							<a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i data-feather="bell"></i>
-                                @forelse ($key as $announce)
+                                @if (isset($key))
 								<div class="indicator">
 									<div class="circle"></div>
 								</div>
-                                @empty
-
-                                @endforelse
+                                @endif
 
 							</a>
 							<div class="dropdown-menu" aria-labelledby="notificationDropdown">
@@ -197,26 +193,28 @@ License: You must have a valid license purchased only from above link or https:/
 									<p class="mb-0 font-weight-medium">Announcements</p>
 								</div>
 								<div class="dropdown-body">
-                                    @forelse ($key as $announce)
-                                <a href="javascript:;" class="dropdown-item">
-                                    <div class="icon">
-                                        <i data-feather="layers"></i>
-                                    </div>
-                                    <div class="content">
-                                        <p></p>
-                                        <p class="sub-text text-muted"></p>
-                                    </div>
-                                </a>
-                                @empty
-                                <a href="" class="dropdown-item">
-                                    <div class="icon">
-                                        <i data-feather="bell-off"></i>
-                                    </div>
-                                    <div class="content">
-                                        <p>No Announcements published!</p>
-                                    </div>
-                                </a>
-                                @endforelse
+                                    @if (isset($key))
+                                    @for ($i = 0; $i < 5; $i++)
+                                    <a href="{{ route('author.announcement') }}" class="dropdown-item">
+                                        <div class="icon">
+                                            <i data-feather="layers"></i>
+                                        </div>
+                                        <div class="content">
+                                            <p>{{ $key[$i] }}</p>
+                                            <p class="sub-text text-muted"></p>
+                                        </div>
+                                    </a>
+                                    @endfor
+                                    @else
+                                    <a href="" class="dropdown-item">
+                                        <div class="icon">
+                                            <i data-feather="bell-off"></i>
+                                        </div>
+                                        <div class="content">
+                                            <p>No Announcements published!</p>
+                                        </div>
+                                    </a>
+                                    @endif
 
 								</div>
 								<div class="dropdown-footer d-flex align-items-center justify-content-center">
