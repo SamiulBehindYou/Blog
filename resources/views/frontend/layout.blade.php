@@ -94,12 +94,10 @@
                           {{ Auth::guard('author')->user()->name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="{{ route('author.control') }}">Author Controls</a>
+                          <a class="dropdown-item btn-subscribe" href="{{ route('author.control') }}">Author Controls</a>
                           <form method="POST" action="{{ route('author.logout') }}">
                             @csrf
-                            <div class="pl-4">
-                                <button type="submit" class="btn text-danger m-0 p-0">Log Out</button>
-                            </div>
+                                <button type="submit" class="dropdown-item btn-subscribe text-danger">Log Out</button>
                             </form>
                         </div>
                       </div>

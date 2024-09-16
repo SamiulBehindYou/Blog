@@ -6,7 +6,7 @@
     <div class="col-md-10 m-auto">
         <div class="card">
             <div class="card-header bg-primary">
-                <h3 class="text-white text-center">Announcements Table</h3>
+                <h3 class="text-white text-center">Author Messages {{ $unread }}</h3>
             </div>
             <div class="card-body">
                 <table class="table text-center">
@@ -14,13 +14,15 @@
                         <th width='10%'>SL</th>
                         <th width='10%'>Subject</th>
                         <th width='60%'>Message</th>
-                        <th width='20%'>Action</th>
+                        <th width='10%'>Receive</th>
+                        <th width='10%'>Action</th>
                     </tr>
                     @forelse ($messages as $sl=>$message)
                     <tr>
                         <td>{{ $sl+1 }}</td>
                         <td>{{ $message->subject }}</td>
                         <td>{{ $message->message }}</td>
+                        <td>{{ $message->created_at }}</td>
                         <td>
                             @if ($message->read_recipt == 0)
                                 <a href="{{ route('make.read', $message->id) }}" class="btn btn-outline-success">View read</a>
