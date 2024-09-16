@@ -164,7 +164,7 @@ License: You must have a valid license purchased only from above link or https:/
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('admin.view.message') }}" class="nav-link">
               <i class="link-icon" data-feather="mail"></i>
               <span class="link-title">Author's messages</span>
             </a>

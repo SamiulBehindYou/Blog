@@ -9,7 +9,7 @@ class AnnouncementController extends Controller
 {
     public function announcement(){
         $announcements = Announcement::all();
-        return view('admin.announcement.announcement', compact('announcements'));
+        return view('admin.communication.announcement', compact('announcements'));
     }
 
     public function store(Request $request){

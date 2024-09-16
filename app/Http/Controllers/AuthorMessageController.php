@@ -15,6 +15,24 @@ class AuthorMessageController extends Controller
     }
 
     public function store(Request $request){
-        //
+        $request->validate([
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+        Message::create([
+            'author_id' => Auth::guard('author')->user()->id,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ]);
+
+        return back()->withSuccess('Message sent to admin!');
     }
+
+    public function delete($id){
+        Message::find($id)->delete();
+        return back()->withInfo('Message deleted!');
+    }
+
+
 }

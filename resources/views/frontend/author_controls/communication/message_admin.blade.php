@@ -14,15 +14,16 @@
                         <th>SL</th>
                         <th>Subject</th>
                         <th>Message</th>
+                        <th>Read Recipt</th>
                         <th>Action</th>
                     </tr>
                     @forelse ($messages as $sl=>$message)
 
                     <tr>
                         <td>{{ $sl+1 }}</td>
-                        <td>{{ $message->title }}</td>
-                        <td>{{ $message->description }}</td>
-                        <td>{{ $message->importance }}</td>
+                        <td>{{ $message->subject }}</td>
+                        <td>{{ $message->message }}</td>
+                        <td><p class="text-{{ $message->read_recipt == 0 ? 'primary':'success' }}">{{ $message->read_recipt == 0 ? 'Sent':'Seen' }}</p></td>
                         <td>
                             <a href="{{ route('author.message.delete', $message->id) }}" class="btn btn-outline-danger btn-sm">Delete</a>
                         </td>

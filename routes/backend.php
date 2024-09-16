@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminBlogController;
+use App\Http\Controllers\AdminMessageController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
@@ -69,4 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::post('announcement/store', [AnnouncementController::class, 'store'])->name('admin.announce.store');
     Route::get('announcement/delete/{id}', [AnnouncementController::class, 'delete'])->name('admin.announce.delete');
 
+    // Messages
+    Route::get('admin/author_messgae', [AdminMessageController::class, 'view_messgae'])->name('admin.view.message');
+    Route::get('admin/makeread/{id}', [AdminMessageController::class, 'make_read'])->name('make.read');
 });

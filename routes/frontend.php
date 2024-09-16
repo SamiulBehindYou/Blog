@@ -37,6 +37,6 @@ Route::middleware('author')->group(function (){
     // Messages
     Route::get('author/messages/', [AuthorMessageController::class, 'messages'])->name('author.messages');
     Route::post('author/messages/store', [AuthorMessageController::class, 'store'])->name('author.message.store');
-    Route::get('author/messages/delete', [AuthorMessageController::class, 'delete'])->name('author.message.delete');
+    Route::get('author/messages/delete/{id}', [AuthorMessageController::class, 'delete'])->name('author.message.delete');
 
 });
