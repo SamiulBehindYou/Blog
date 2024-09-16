@@ -12,7 +12,7 @@ class TagController extends Controller
         return view('admin.tags.add_tag');
     }
     public function tags(){
-        $tags = Tag::all();
+        $tags = Tag::orderBy('id', 'DESC')->paginate(10);
         return view('admin.tags.tags', compact('tags'));
     }
 

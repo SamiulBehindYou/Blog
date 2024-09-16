@@ -15,7 +15,7 @@ class CategoryController extends Controller
 {
     //Categories
     public function categroy(){
-        $categories = Category::all();
+        $categories = Category::orderBy('id', 'DESC')->paginate(10);
         return view('admin.category.category', compact('categories'));
     }
     public function trashed_categroy(){
@@ -76,7 +76,7 @@ class CategoryController extends Controller
     }
 
     public function subcategroy(){
-        $subcategories = SubCategory::all();
+        $subcategories = SubCategory::orderBy('id', 'DESC')->paginate(10);
         return view('admin.category.subcategory', compact('subcategories'));
     }
 

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AdminMessageController extends Controller
 {
     public function view_messgae(){
-        $messages = Message::all();
+        $messages = Message::orderBy('id', 'DESC')->paginate(10);
         return view('admin.communication.author_message', compact('messages'));
     }
     public function make_read($id){

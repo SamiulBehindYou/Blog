@@ -22,7 +22,7 @@
                         <td>{{ $sl+1 }}</td>
                         <td>{{ $message->subject }}</td>
                         <td>{{ $message->message }}</td>
-                        <td>{{ $message->created_at }}</td>
+                        <td>{{ $message->created_at->diffForHumans() }}</td>
                         <td>
                             @if ($message->read_recipt == 0)
                                 <a href="{{ route('make.read', $message->id) }}" class="btn btn-outline-success">View read</a>
@@ -33,10 +33,15 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="4"><div class="text-danger"><i data-feather="bell-off"></i></div><h3>No Messages</h3></td>
+                        <td colspan="5"><div class="text-danger"><i data-feather="bell-off"></i></div><h3>No Messages</h3></td>
                     </tr>
                     @endforelse
                 </table>
+                @if ($messages->hasPages())
+                    <div class="pagination-wrapper mt-3">
+                        {{ $messages->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

@@ -83,7 +83,9 @@ class AuthorControlController extends Controller
     }
 
     public function hard_delete($id){
-        Blog::onlyTrashed()->find($id)->forceDelete();
+        $blog = Blog::onlyTrashed()->find($id);
+        unlink(public_path('uploads/blogs/'.$blog->image));
+        $blog->forceDelete();
         return back()->withInfo('Blog permanatly deleted!');
     }
 

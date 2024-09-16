@@ -33,6 +33,11 @@
                     </tr>
                     @endforelse
                 </table>
+                @if ($tags->hasPages())
+                    <div class="pagination-wrapper mt-3">
+                        {{ $tags->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

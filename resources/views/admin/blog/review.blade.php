@@ -58,6 +58,11 @@
                     </tr>
                     @endforelse
                 </table>
+                @if ($blogs->hasPages())
+                    <div class="pagination-wrapper mt-3">
+                        {{ $blogs->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

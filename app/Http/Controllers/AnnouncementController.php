@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AnnouncementController extends Controller
 {
     public function announcement(){
-        $announcements = Announcement::all();
+        $announcements = Announcement::orderBy('id', 'DESC')->paginate(10);
         return view('admin.communication.announcement', compact('announcements'));
     }
 

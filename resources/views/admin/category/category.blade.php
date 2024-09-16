@@ -35,6 +35,11 @@
                     </tr>
                     @endforelse
                 </table>
+                @if ($categories->hasPages())
+                    <div class="pagination-wrapper mt-3">
+                        {{ $categories->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

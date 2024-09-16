@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/owl.carousel.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/line-awesome.min.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/css/frontawesome.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/css/fontawesome.css">
 
     <!-- main style -->
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css">
@@ -148,8 +148,7 @@
                                 <form action="#" class="newslettre-form">
                                     <div class="form-flex">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email Adress"
-                                                required="required">
+                                            <input type="email" class="form-control" placeholder="Your Email Adress" required="required">
                                         </div>
                                         <button class="submit-btn" type="submit">
                                             <i class="fas fa-paper-plane"></i>
@@ -179,7 +178,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="copyright">
-                                <p>© 2022, AssiaGroupe, All Rights Reserved.</p>
+                                <p>© 2024, SAMIUL's Blog, All Rights Reserved.</p>
                             </div>
                         </div>
                     </div>

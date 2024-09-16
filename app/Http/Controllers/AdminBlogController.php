@@ -57,7 +57,7 @@ class AdminBlogController extends Controller
         return view('admin.blog.admin_blogs', compact('blogs'));
     }
     public function view_blogs(){
-        $blogs = Blog::all();
+        $blogs = Blog::orderBy('id', 'DESC')->paginate(15);
         return view('admin.blog.blogs', compact('blogs'));
     }
     public function view_trash(){
@@ -66,7 +66,7 @@ class AdminBlogController extends Controller
     }
 
     public function review(){
-        $blogs = Blog::whereNot('author_id', 0)->where('status', 0)->get();
+        $blogs = Blog::whereNot('author_id', 0)->where('status', 0)->paginate(15);
         return view('admin.blog.review', compact('blogs'));
     }
 
