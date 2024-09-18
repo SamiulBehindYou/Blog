@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->longText('description');
             $table->string('image');
             $table->integer('author_id');
-            $table->string('read_time')->nullable();
+            $table->string('read_time');
+            $table->string('tag');
             $table->integer('subcategory_id');
             $table->integer('visibility')->default(0);
             $table->integer('status')->default(0);

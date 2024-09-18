@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class AuthorController extends Controller
 {
@@ -58,6 +60,52 @@ class AuthorController extends Controller
             return back()->withErrors('Email not registerd!');
         }
     }
+
+    public function edit_page(){
+        return view('frontend.author_controls.profile.edit_profile');
+    }
+
+    public function update_profile(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+
+        $author = Author::find(Auth::guard('author')->user()->id);
+
+        $author->name = $request->name;
+        $author->email = $request->email;
+        $author->save();
+
+        return back()->withSuccess('Profile updated successfully!');
+    }
+
+    public function image_update(Request $request){
+        $request->validate([
+            'image' => 'required|mimes:png,jpg|max:2048',
+        ]);
+
+        $update = Author::find(Auth::guard('author')->user()->id);
+
+        $image = $request->image;
+        $ext = $image->getClientOriginalExtension();
+        $imageName = uniqid().'.'.$ext;
+        if(!$update->image == null){
+            unlink(public_path('uploads/authors/'.$update->image));
+        }
+        $update->image = $imageName;
+        $update->save();
+
+        // create new image instance
+        $manager = new ImageManager(Driver::class);
+        $img = $manager->read($image);
+
+        $img->cover(250, 250);
+        $img->save(public_path('uploads/authors/'.$imageName));
+
+        return back()->withSuccess('Photo updated successfully!');
+    }
+
 
     /**
      * Destroy an authenticated session.

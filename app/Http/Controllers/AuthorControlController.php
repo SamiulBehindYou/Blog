@@ -31,13 +31,16 @@ class AuthorControlController extends Controller
 
     public function createpost(Request $request){
         $request->validate([
-            'sub_category' => 'required',
             'title' => 'required',
-            'description' => 'required|max:1000',
-            'readtime' => 'required',
+            'sub_category' => 'required',
+            'description' => 'required',
             'image' => 'required|mimes:png,jpg,webp,gif,jpeg|max:4096',
+            'tag_id' => 'required',
+            'read_time' => 'required',
         ]);
 
+
+//Image proccessing
         $extension = $request->image->extension();
         $file_name = uniqid().'.'.$extension;
 
@@ -53,13 +56,17 @@ class AuthorControlController extends Controller
         // save modified image in new format
         $image->save(public_path('uploads/blogs/'.$file_name));
 
+//Convert tag id's to string for storing
+        $tag = implode(',', $request->tag_id);
+
         Blog::insert([
             'title' => $request->title,
+            'subcategory_id' => $request->sub_category,
             'description' => $request->description,
             'image' => $file_name,
+            'tag' => $tag,
+            'read_time' => $request->read_time,
             'author_id' => $request->author_id,
-            'read_time' => $request->readtime,
-            'subcategory_id' => $request->sub_category,
             'created_at' => Carbon::now(),
         ]);
 

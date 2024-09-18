@@ -120,23 +120,23 @@
                         <!--post1-->
                         <div class="post-list post-list-style4">
                             <div class="post-list-image">
-                                <a href="post-single.html">
+                                <a href="{{ route('blog.view',$blog->id) }}">
                                     <img src="{{ asset('uploads/blogs/').'/'.$blog->image }}" alt="">
                                 </a>
                             </div>
                             <div class="post-list-content">
                                 <ul class="entry-meta">
                                     <li class="entry-cat">
-                                        <a href="blog-layout-1.html" class="category-style-1">{{ $subcategory[$blog->subcategory_id] }}</a>
+                                        <a href="" class="category-style-1">{{ $subcategory[$blog->subcategory_id] }}</a>
                                     </li>
                                     <li class="post-date"> <span class="line"></span> {{ $blog->created_at->diffForHumans() }}</li>
                                 </ul>
                                 <h5 class="entry-title">
-                                    <a href="post-single.html">{{ $blog->title }}</a>
+                                    <a href="{{ route('blog.view', $blog->id) }}">{{ $blog->title }}</a>
                                 </h5>
 
                                 <div class="post-btn">
-                                    <a href="post-single.html" class="btn-read-more">Continue Reading <i
+                                    <a href="{{ route('blog.view', $blog->id) }}" class="btn-read-more">Continue Reading <i
                                             class="las la-long-arrow-alt-right"></i></a>
                                 </div>
                             </div>

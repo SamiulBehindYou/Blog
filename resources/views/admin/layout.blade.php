@@ -27,6 +27,11 @@ License: You must have a valid license purchased only from above link or https:/
   <!-- Layout styles -->
 	<link rel="stylesheet" href="{{ asset('admin') }}/css/demo_1/style.css">
   <!-- End layout styles -->
+  {{-- Summernote --}}
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+  {{-- Selectize --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"/>
+
   {{-- <link rel="shortcut icon" href="{{ asset('admin') }}/images/favicon.png" /> --}}
 </head>
 <body>
@@ -397,6 +402,21 @@ License: You must have a valid license purchased only from above link or https:/
   <script src="{{ asset('admin') }}/js/dashboard.js"></script>
   <script src="{{ asset('admin') }}/js/datepicker.js"></script>
 	<!-- end custom js for this page -->
+    {{-- Summernote --}}
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Write your top blogs here!',
+            tabsize: 2,
+            height: 300
+        });
+    </script>
+
+    {{-- Selectize --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"></script>
+    <script>
+        $('#select-tag').selectize({ sortField: 'text' })
+    </script>
     {{-- sweetalert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if (session('success'))

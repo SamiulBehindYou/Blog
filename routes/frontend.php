@@ -21,7 +21,14 @@ Route::middleware('author')->group(function (){
     Route::get('/author/controls', [AuthorControlController::class, 'author_control'])->name('author.control');
     Route::post('/author/logout', [AuthorController::class, 'destroy'])->name('author.logout');
 
-    // Blog
+    //Author profile
+    Route::get('author/update/profile', [AuthorController::class, 'edit_page'])->name('author.profile.edit');
+    Route::post('author/update/profile', [AuthorController::class, 'update_profile'])->name('author.profile.update');
+    Route::post('author/profile/image', [AuthorController::class, 'image_update'])->name('author.update.image'); //imp
+
+    //Blog view
+    Route::get('/blog/view/{id}', [FrontendController::class, 'view_blog'])->name('blog.view');
+    // Author blog actions
     Route::get('/author/blog/create', [AuthorControlController::class, 'blog_create'])->name('author.blog.create');
     Route::get('/author/blogs', [AuthorControlController::class, 'blogs'])->name('author.blogs');
     Route::post('createpost', [AuthorControlController::class, 'createpost'])->name('author.new.post');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\SubCategory;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -13,17 +14,21 @@ class AdminBlogController extends Controller
 {
     public function create(){
         $subcategories = SubCategory::all();
-        return view('admin.blog.create', compact('subcategories'));
+        $tags = Tag::all();
+        return view('admin.blog.create', compact('subcategories', 'tags'));
     }
     public function store(Request $request){
         $request->validate([
-            'sub_category' => 'required',
             'title' => 'required',
-            'description' => 'required|max:1000',
-            'readtime' => 'required',
+            'sub_category' => 'required',
+            'description' => 'required',
             'image' => 'required|mimes:png,jpg,webp,gif,jpeg|max:4096',
+            'tag_id' => 'required',
+            'read_time' => 'required',
         ]);
 
+
+//Image proccessing
         $extension = $request->image->extension();
         $file_name = uniqid().'.'.$extension;
 
@@ -39,15 +44,19 @@ class AdminBlogController extends Controller
         // save modified image in new format
         $image->save(public_path('uploads/blogs/'.$file_name));
 
+//Convert tag id's to string for storing
+        $tag = implode(',', $request->tag_id);
+
         Blog::insert([
             'title' => $request->title,
+            'subcategory_id' => $request->sub_category,
             'description' => $request->description,
             'image' => $file_name,
+            'tag' => $tag,
+            'read_time' => $request->read_time,
             'author_id' => $request->author_id,
-            'read_time' => $request->readtime,
-            'subcategory_id' => $request->sub_category,
-            'created_at' => Carbon::now(),
             'status' => 1,
+            'created_at' => Carbon::now(),
         ]);
 
         return back()->withSuccess('Blog posted successfully!');
@@ -66,7 +75,7 @@ class AdminBlogController extends Controller
     }
 
     public function review(){
-        $blogs = Blog::whereNot('author_id', 0)->where('status', 0)->paginate(15);
+        $blogs = Blog::where('status', 0)->paginate(15);
         return view('admin.blog.review', compact('blogs'));
     }
 

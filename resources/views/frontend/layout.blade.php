@@ -48,7 +48,7 @@
                         <div class="collapse navbar-collapse" id="main_nav">
                             <ul class="navbar-nav ">
                                 <li class="nav-item ">
-                                    <a class="nav-link active" href="index.html"> Home </a>
+                                    <a class="nav-link active" href="{{ route('front.dashboard') }}"> Home </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="blog.html"> Blogs </a>

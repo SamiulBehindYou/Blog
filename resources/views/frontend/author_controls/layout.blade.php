@@ -85,9 +85,9 @@ License: You must have a valid license purchased only from above link or https:/
             <a href="{{ route('author.announcement') }}" class="nav-link">
                 <i class="link-icon" data-feather="volume-2"></i>
                 <span class="link-title">Announcement</span>
-                @if (isset($key))
-                <div class="text-danger">*</div>
-                @endif
+
+                <sup class="text-danger"> {{ $announces }}</sup>
+
             </a>
           </li>
           <li class="nav-item">
@@ -230,12 +230,20 @@ License: You must have a valid license purchased only from above link or https:/
 						</li>
 						<li class="nav-item dropdown nav-profile">
 							<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img src="https://via.placeholder.com/30x30" alt="profile">
+								@if(Auth::guard('author')->user()->image == null)
+								<img src="{{ asset('uploads/profile.jpg') }}" alt="profile">
+                                @else
+								<img src="{{ asset('uploads/authors/'.Auth::guard('author')->user()->image) }}" alt="profile">
+                                @endif
 							</a>
 							<div class="dropdown-menu" aria-labelledby="profileDropdown">
 								<div class="dropdown-header d-flex flex-column align-items-center">
 									<div class="figure mb-3">
-										<img src="https://via.placeholder.com/80x80" alt="">
+										@if(Auth::guard('author')->user()->image == null)
+                                        <img src="{{ asset('uploads/profile.jpg') }}" alt="profile">
+                                        @else
+                                        <img src="{{ asset('uploads/authors/'.Auth::guard('author')->user()->image) }}" alt="profile">
+                                        @endif
 									</div>
 									<div class="info text-center">
 										<p class="name font-weight-bold mb-0">{{ Auth::guard('author')->user()->name }}</p>
@@ -245,7 +253,7 @@ License: You must have a valid license purchased only from above link or https:/
 								<div class="dropdown-body">
 									<ul class="profile-nav p-0 pt-3">
 										<li class="nav-item">
-											<a href="{{ route('profile.edit') }}" class="nav-link">
+											<a href="{{ route('author.profile.edit') }}" class="nav-link">
 												<i data-feather="edit"></i>
 												<span>Edit Profile</span>
 											</a>

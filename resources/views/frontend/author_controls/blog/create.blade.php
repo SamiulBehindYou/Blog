@@ -67,9 +67,9 @@
                             @enderror
                         </div>
                         <div class="mb-3 col">
-                            <label class="form-label">Read Time. <small>Not required</small></label>
-                            <input type="number" class="form-control">
-                            @error('readtime')
+                            <label class="form-label">Read Time <small class="text-warning">min</small></label>
+                            <input type="number" name="read_time" class="form-control">
+                            @error('read_time')
                                 <strong class="text-danger">{{ $message }}</strong>
                             @enderror
                         </div>
