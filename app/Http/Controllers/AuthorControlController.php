@@ -6,6 +6,7 @@ use App\Models\SubCategory;
 use App\Models\Announcement;
 use App\Models\Blog;
 use App\Models\Message;
+use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
@@ -20,7 +21,8 @@ class AuthorControlController extends Controller
     }
     public function blog_create(){
         $subcategories = SubCategory::all();
-        return view('frontend.author_controls.blog.create', compact('subcategories'));
+        $tags = Tag::all();
+        return view('frontend.author_controls.blog.create', compact('subcategories', 'tags'));
     }
     public function blogs(){
         $blogs = Blog::where('author_id', Auth::guard('author')->user()->id)->get();

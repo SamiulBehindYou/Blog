@@ -14,7 +14,8 @@
                         <th width='10%'>SL</th>
                         <th width='10%'>Subject</th>
                         <th width='60%'>Description</th>
-                        <th width='20%'>Importance</th>
+                        <th width='10%'>Importance</th>
+                        <th width='10%'>Announce at</th>
                     </tr>
                     @forelse ($announcements as $sl=>$announce)
                     <tr>
@@ -22,6 +23,7 @@
                         <td>{{ $announce->title }}</td>
                         <td>{{ $announce->description }}</td>
                         <td>{{ $announce->importance }}</td>
+                        <td>{{ $announce->created_at->diffForHumans() }}</td>
                     </tr>
                     @empty
                     <tr>
