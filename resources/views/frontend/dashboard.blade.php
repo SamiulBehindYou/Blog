@@ -206,12 +206,15 @@
                             <div class="widget widget-newsletter">
                                 <h5>Subscribe To Our Newsletter</h5>
                                 <p>No spam, notifications only about new products, updates.</p>
-                                <form action="#" class="newslettre-form">
+                                <form action="{{ route('subscrib') }}" class="newslettre-form" method="POST">
+                                    @csrf
                                     <div class="form-flex">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email Adress"
-                                                required="required">
+                                            <input type="email" class="form-control" placeholder="Your Email Adress" name="email" required="required">
                                         </div>
+                                        @error('email')
+                                            <strong class="text-warning">{{ $message }}</strong>
+                                        @enderror
                                         <button class="btn-custom" type="submit">Subscribe now</button>
                                     </div>
                                 </form>

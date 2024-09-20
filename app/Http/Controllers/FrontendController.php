@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\SubCategory;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -46,6 +47,10 @@ class FrontendController extends Controller
             $tags_name[$tag->id] = $tag->tag;
         }
 
-        return view('frontend.view_blog', compact('blog', 'subcategory', 'author', 'tag_id', 'tags_name'));
+        // Comment
+        $comments = Comment::where('blog_id', $id)->orderBy('id', 'DESC')->simplePaginate(3);
+        $total_comments = Comment::where('blog_id', $id)->count();
+
+        return view('frontend.view_blog', compact('blog', 'subcategory', 'author', 'tag_id', 'tags_name', 'comments', 'total_comments'));
     }
 }

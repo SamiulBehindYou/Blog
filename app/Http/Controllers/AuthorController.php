@@ -49,7 +49,7 @@ class AuthorController extends Controller
                     return redirect('/')->withSuccess('Successfully Logged In.');
                 }
                 else{
-                    return back()->withErrors('Password does not matched!');
+                    return back()->withError('Password does not matched!');
                 }
             }
             else{
@@ -57,7 +57,7 @@ class AuthorController extends Controller
             }
         }
         else{
-            return back()->withErrors('Email not registerd!');
+            return back()->withError('Email not registerd!');
         }
     }
 

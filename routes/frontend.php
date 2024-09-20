@@ -5,6 +5,8 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\AuthorControlController;
 use App\Http\Controllers\AuthorMessageController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SubscribController;
 
 // Frontend
 Route::get('/', [FrontendController::class, 'front_dashboard'])->name('front.dashboard'); //landing page
@@ -45,5 +47,11 @@ Route::middleware('author')->group(function (){
     Route::get('author/messages/', [AuthorMessageController::class, 'messages'])->name('author.messages');
     Route::post('author/messages/store', [AuthorMessageController::class, 'store'])->name('author.message.store');
     Route::get('author/messages/delete/{id}', [AuthorMessageController::class, 'delete'])->name('author.message.delete');
+
+    // Subscrib
+    Route::post('subscrib', [SubscribController::class, 'subscrib'])->name('subscrib');
+
+    // Comment
+    Route::post('comment', [CommentController::class, 'comment'])->name('comment');
 
 });

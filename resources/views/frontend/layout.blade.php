@@ -131,9 +131,9 @@
                                 <h6>Menu</h6>
                                 <ul>
                                     <li><a href="#">Homepage</a></li>
-                                    <li><a href="#">about us</a></li>
-                                    <li><a href="#">contact us</a></li>
-                                    <li><a href="#">privarcy</a></li>
+                                    <li><a href="#">Blogs</a></li>
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">Contact us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -145,15 +145,19 @@
                                     <p>Sign up for free and be the first to get notified about new posts.</p>
                                 </div>
 
-                                <form action="#" class="newslettre-form">
+                                <form action="{{ route('subscrib') }}" method="POST" class="newslettre-form">
+                                    @csrf
                                     <div class="form-flex">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email Adress" required="required">
+                                            <input type="email" name="email" class="form-control" placeholder="Your Email Adress" required="required">
                                         </div>
                                         <button class="submit-btn" type="submit">
                                             <i class="fas fa-paper-plane"></i>
                                         </button>
                                     </div>
+                                    @error('email')
+                                        <strong class="text-warning">{{ $message }}</strong>
+                                    @enderror
                                 </form>
                             </div>
                         </div>
@@ -246,12 +250,12 @@
         });
     </script>
     @endif
-    @if (session('errors'))
+    @if (session('error'))
     <script>
         Swal.fire({
         position: "center",
         icon: "error",
-        title: "{{ session('errors') }}",
+        title: "{{ session('error') }}",
         showConfirmButton: false,
         timer: 3500
         });
@@ -275,6 +279,7 @@
         });
     </script>
     @endif
+
 
 
 </body>

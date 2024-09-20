@@ -7,6 +7,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -75,4 +77,10 @@ Route::middleware('auth')->group(function () {
     // Messages
     Route::get('admin/author_messgae', [AdminMessageController::class, 'view_messgae'])->name('admin.view.message');
     Route::get('admin/makeread/{id}', [AdminMessageController::class, 'make_read'])->name('make.read');
+
+    //Blog view
+    Route::get('/blog/view/{id}', [FrontendController::class, 'view_blog'])->name('blog.view');
+
+    // Comment
+    Route::post('comment', [CommentController::class, 'comment'])->name('comment');
 });
