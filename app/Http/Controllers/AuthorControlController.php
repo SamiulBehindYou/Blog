@@ -17,7 +17,62 @@ use Illuminate\Support\Facades\Auth;
 class AuthorControlController extends Controller
 {
     public function author_control(){
-        return view('frontend.author_controls.dashboard');
+        $blogs = Blog::where('author_id', Auth::guard('author')->id())->whereMonth('created_at', Carbon::now())->get();
+        $blogs_a = Blog::where('author_id', Auth::guard('author')->id())->whereMonth('updated_at', Carbon::now())->get();
+
+        $blog_no = 0;
+        $index = 0;
+        $blog_per_day = [];
+        //making all date 0;
+        for($i = 0; $i <=31; $i++){
+            $blog_per_day[$i] = 0;
+        }
+        // update only which date has blog
+        foreach($blogs as $blog){
+            if($index == $blog->created_at->format('d')){
+                $blog_no ++;
+                $blog_per_day[$index] = $blog_no;
+            }else{
+                $blog_no = 1;
+                $index = $blog->created_at->format('d');
+                $blog_per_day[$index] = $blog_no;
+            }
+        }
+        for($index; $index <= 31; $index++){
+            $blog_per_day[$index+1] = null;
+        }
+
+        // ----------------Blog approve per day-------------------
+        $approve_no = 0;
+        $i = 0;
+        $blog_approve_per_day = [];
+        //making all date 0;
+        for($i = 0; $i <=32; $i++){
+            $blog_approve_per_day[$i] = 0;
+        }
+        // update only which date has blog
+        foreach($blogs_a as $blog){
+            if($i == $blog->updated_at->format('d')){
+                $approve_no ++;
+                $blog_approve_per_day[$i] = $approve_no;
+            }else{
+                $approve_no = 1;
+                $i = $blog->updated_at->format('d');
+                $blog_approve_per_day[$i] = $approve_no;
+            }
+        }
+        for($i; $i <= 31; $i++){
+            $blog_approve_per_day[$i+1] = null;
+        }
+
+
+
+        $total_blog = $blogs->count(); // Total blog
+        $approved_blog = $blogs->where('status', 1)->count(); //total approved
+
+
+
+        return view('frontend.author_controls.dashboard', compact('blogs', 'blog_approve_per_day', 'blog_per_day', 'total_blog', 'approved_blog'));
     }
     public function blog_create(){
         $subcategories = SubCategory::all();
@@ -25,7 +80,7 @@ class AuthorControlController extends Controller
         return view('frontend.author_controls.blog.create', compact('subcategories', 'tags'));
     }
     public function blogs(){
-        $blogs = Blog::where('author_id', Auth::guard('author')->user()->id)->get();
+        $blogs = Blog::where('author_id', Auth::guard('author')->user()->id)->orderBy('id', 'DESC')->get();
         return view('frontend.author_controls.blog.blogs', compact('blogs'));
     }
 

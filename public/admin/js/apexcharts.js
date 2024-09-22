@@ -72,7 +72,7 @@ $(function() {
       height: '320',
       parentHeightOffset: 0
     },
-    colors: ["#f77eb9"],    
+    colors: ["#f77eb9"],
     grid: {
       borderColor: "rgba(77, 138, 240, .1)",
       padding: {
@@ -88,9 +88,9 @@ $(function() {
       categories: ['01/01/1991','01/01/1992','01/01/1993','01/01/1994','01/01/1995','01/01/1996','01/01/1997', '01/01/1998','01/01/1999']
     }
   }
-  
+
   var apexBarChart = new ApexCharts(document.querySelector("#apexBar"), options);
-  
+
   apexBarChart.render();
   // Apex Bar chart end
 
@@ -220,12 +220,12 @@ $(function() {
     },
     series: [44, 55, 13, 33]
   };
-  
+
   var chart = new ApexCharts(document.querySelector("#apexDonut"), options);
-  
+
   chart.render();
   // Apex Donut chart start
-  
+
   // Apex Pie chart end
   var options = {
     chart: {
@@ -245,10 +245,10 @@ $(function() {
     },
     series: [44, 55, 13, 33]
   };
-  
+
   var chart = new ApexCharts(document.querySelector("#apexPie"), options);
-  
-  chart.render();  
+
+  chart.render();
   // Apex Pie chart end
 
   // Apex Mixed chart start
@@ -412,11 +412,11 @@ $(function() {
     series: [44, 55, 67, 83],
     labels: ["Apples", "Oranges", "Bananas", "Berries"]
   };
-  
+
   var chart = new ApexCharts(document.querySelector("#apexRadialBar"), options);
-  
+
   chart.render();
-  
+
   var chartAreaBounds = chart.w.globals.dom.baseEl.querySelector('.apexcharts-inner').getBoundingClientRect();
   // Apex Radialbar chart end
 
@@ -590,9 +590,9 @@ var options = {
 
   chart.render();
   // Apex Heat chart end
-  
-  
 
-  
+
+
+
 
 });

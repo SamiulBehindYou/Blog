@@ -13,4 +13,9 @@ class Message extends Model
         'subject',
         'message',
     ];
+
+    // Relations
+    public function rel_to_author(){
+        return $this->belongsTo(Author::class, 'author_id');
+    }
 }

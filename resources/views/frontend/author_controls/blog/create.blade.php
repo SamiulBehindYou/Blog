@@ -46,7 +46,7 @@
                         <div class="mb-3 col">
                             <label class="form-label">Blog Thamnail</label>
                             <input type="file" name="image" class="form-control" onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
-                            <div><small class="text-danger">Image should be less then 4MB and type: jpg, png, gif and webp.</small></div>
+                            <div><small class="text-warning">Image should be less then 4MB and type: jpg, png, gif and webp.</small></div>
                             @error('image')
                                 <strong class="text-danger">{{ $message }}</strong>
                             @enderror

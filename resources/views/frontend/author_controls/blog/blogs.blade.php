@@ -26,7 +26,7 @@
                         <td>{{ $sl+1 }}</td>
                         <td>{{ $blog->title }}</td>
                         <td><img src="{{ asset('uploads/blogs').'/'.$blog->image }}"></td>
-                        <td>{{ $blog->created_at }}</td>
+                        <td>{{ $blog->created_at->diffForHumans() }}</td>
                         <td>
                             @if ($blog->status == 0)
                                 <div class="text-danger">Not Visible</div>

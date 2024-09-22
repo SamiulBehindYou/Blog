@@ -18,7 +18,7 @@
               </div>
               <div class="row">
                 <div class="col-4 col-md-12 col-xl-2">
-                  <h3 class="mb-2">10</h3>
+                  <h3 class="mb-2">{{ $total_blog }}</h3>
                   <div class="d-flex align-items-baseline">
                     <p class="text-success">
                       <span>+3.3%</span>
@@ -31,7 +31,7 @@
                         <h6 class="card-title mb-0">Total Approved Post</h6>
                       </div>
                   </div>
-                  <h3 class="mb-2">10</h3>
+                  <h3 class="mb-2">{{ $approved_blog }}</h3>
                   <div class="d-flex align-items-baseline">
                     <p class="text-success">
                       <span>+3.3%</span>
@@ -59,11 +59,29 @@
      var options = {
           series: [{
             name: "Total post",
-            data: [10, 41, 35, 51, 60, 70, 80, 90, 100, 150, 200, 500]
+            data: [
+                @for ($i = 1; $i < count($blog_per_day); $i++)
+                    @if($blog_per_day[$i] == 0)
+                        {{ 0 }}{{ ',' }}
+                    @else
+                        {{ $blog_per_day[$i].',' }}
+                    @endif
+
+                @endfor
+            ]
             },
             {
             name: "Approved post",
-            data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+            data: [
+                @for ($i = 1; $i < count($blog_approve_per_day); $i++)
+                    @if($blog_approve_per_day[$i] == 0)
+                        {{ 0 }}{{ ',' }}
+                    @else
+                        {{ $blog_approve_per_day[$i].',' }}
+                    @endif
+
+                @endfor
+            ]
           },
         ],
           chart: {
@@ -80,7 +98,7 @@
           curve: 'straight'
         },
         title: {
-          text: 'Post Trends by Month',
+          text: 'Post Trends by per day',
           align: 'left'
         },
         grid: {
@@ -90,7 +108,7 @@
           },
         },
         xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
         }
         };
 

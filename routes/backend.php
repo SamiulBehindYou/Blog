@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
 
     //Admin Dashboard
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('admins', [DashboardController::class, 'admins'])->name('admins');
     Route::get('user/{id}', [DashboardController::class, 'delete_user'])->name('user.delete');
     Route::get('/profile', [DashboardController::class, 'edit_profile'])->name('profile.edit');
     Route::get('/register/admin', [DashboardController::class, 'new_register'])->name('admin.new');
@@ -65,7 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/blog/visibility/{id}', [AdminBlogController::class, 'visibility'])->name('admin.blog.visibility');
     Route::post('admin/blog/update/', [AdminBlogController::class, 'update'])->name('admin.blog.update');
     Route::get('admin/blog/delete/{id}', [AdminBlogController::class, 'delete'])->name('admin.blog.delete');
-    Route::get('admin/blog/trash', [AdminBlogController::class, 'view_trash'])->name('blog.trash');
+    Route::get('admin/blog/trashs', [AdminBlogController::class, 'view_trash'])->name('blog.trash');
     Route::get('admin/blog/restore/{id}', [AdminBlogController::class, 'restore'])->name('admin.blog.restore');
     Route::get('admin/blog/hard/{id}', [AdminBlogController::class, 'hard_delete'])->name('admin.blog.hard.delete');
 

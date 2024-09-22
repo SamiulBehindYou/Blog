@@ -219,7 +219,7 @@ $(function() {
         show: true,
         color: 'rgba(0,0,0,0.1)',
         ticks: [[0, 'Jan'], [20, 'Feb'], [40, 'Mar'], [60, 'Apr'], [80, 'May'], [100, 'June'], [120, 'July'], [140, 'Aug']],
-        tickColor: gridLineColor,      
+        tickColor: gridLineColor,
         font: {
           size: 13,
           color: colors.muted
@@ -230,97 +230,9 @@ $(function() {
   }
   // Flot chart1 end
 
-  // Apex chart1 start
-  if($('#apexChart1').length) {
-    var options1 = {
-      chart: {
-        type: "line",
-        height: 60,
-        sparkline: {
-          enabled: !0
-        }
-      },
-      series: [{
-          data: [3844, 3855, 3841, 3867, 3822, 3843, 3821, 3841, 3856, 3827, 3843]
-      }],
-      stroke: {
-        width: 2,
-        curve: "smooth"
-      },
-      markers: {
-        size: 0
-      },
-      colors: ["#727cf5"],
-      tooltip: {
-        fixed: {
-          enabled: !1
-        },
-        x: {
-          show: !1
-        },
-        y: {
-          title: {
-            formatter: function(e) {
-              return ""
-            }
-          }
-        },
-        marker: {
-          show: !1
-        }
-      }
-    };
-    new ApexCharts(document.querySelector("#apexChart1"),options1).render();
-  }
-  // Apex chart1 end
 
-  // Apex chart2 start
-  if($('#apexChart2').length) {
-    var options2 = {
-      chart: {
-        type: "bar",
-        height: 60,
-        sparkline: {
-          enabled: !0
-        }
-      },
-      plotOptions: {
-        bar: {
-          columnWidth: "60%"
-        }
-      },
-      colors: ["#727cf5"],
-      series: [{
-        data: [36, 77, 52, 90, 74, 35, 55, 23, 47, 10, 63]
-      }],
-      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
-      xaxis: {
-        crosshairs: {
-          width: 1
-        }
-      },
-      tooltip: {
-        fixed: {
-          enabled: !1
-        },
-        x: {
-          show: !1
-        },
-        y: {
-          title: {
-            formatter: function(e) {
-              return ""
-            }
-          }
-        },
-        marker: {
-          show: !1
-        }
-      }
-    };
-    new ApexCharts(document.querySelector("#apexChart2"),options2).render();
-  }
-  // Apex chart2 end
+
+ 
 
   // Apex chart3 start
   if($('#apexChart3').length) {
@@ -386,20 +298,19 @@ $(function() {
       step: function(state, circle) {
         circle.path.setAttribute('stroke', state.color);
         circle.path.setAttribute('stroke-width', state.width);
-    
+
         var value = Math.round(circle.value() * 100);
         if (value === 0) {
           circle.setText('');
         } else {
           circle.setText(value + '%');
         }
-    
+
       }
     });
     bar.text.style.fontFamily = "'Overpass', sans-serif;";
     bar.text.style.fontSize = '3rem';
-    
-    bar.animate(.78);
+    bar.animate(progressbar/100); // variable picking from dashboard
   }
   // Progressgar1 start
 
@@ -412,7 +323,7 @@ $(function() {
           labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
           datasets: [{
             label: 'Sales',
-            data: [150,110,90,115,125,160,190,140,100,110,120,120],
+            data: [90,110,90,115,125,160,190,140,100,110,120,120],
             backgroundColor: colors.primary
           }]
         },
@@ -444,7 +355,7 @@ $(function() {
               ticks: {
                 fontColor: '#8392a5',
                 fontSize: 10,
-                min: 80,
+                min: 0,
                 max: 200
               }
             }]
