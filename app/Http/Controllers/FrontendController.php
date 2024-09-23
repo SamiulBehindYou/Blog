@@ -22,10 +22,12 @@ class FrontendController extends Controller
         $categories = Category::limit(10)->get();
         $tags = Tag::limit(10)->get();
 
+
         $blogs = Blog::where('status', 1)->orderBy('id', 'DESC')->paginate(8);
+        $sliders = Blog::where('status', 1)->where('visibility', 1)->latest()->limit(4)->get();
         $populers = Blog::inRandomOrder()->paginate(5);
 
-        return view('frontend.dashboard', compact('blogs', 'categories', 'subcategory', 'tags', 'populers'));
+        return view('frontend.dashboard', compact('blogs', 'sliders', 'categories', 'subcategory', 'tags', 'populers'));
     }
 
     public function view_blog($id){
@@ -52,5 +54,17 @@ class FrontendController extends Controller
         $total_comments = Comment::where('blog_id', $id)->count();
 
         return view('frontend.view_blog', compact('blog', 'subcategory', 'author', 'tag_id', 'tags_name', 'comments', 'total_comments'));
+    }
+
+    public function author_blogs($id){
+        if($id == 0){
+            $author = null;
+        }else{
+            $author = Author::find($id);
+        }
+        $blogs = Blog::where('status', 1)->where('visibility', 1)->where('author_id', $id)->get();
+        $subcategories = SubCategory::all();
+        $tags = Tag::inRandomOrder()->limit(20)->get();
+        return view('frontend.author_blog', compact('blogs', 'author', 'subcategories', 'tags'));
     }
 }

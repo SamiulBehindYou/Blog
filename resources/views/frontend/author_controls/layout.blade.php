@@ -98,7 +98,7 @@ License: You must have a valid license purchased only from above link or https:/
           </li>
           <li class="nav-item nav-category">Management</li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('author.settings') }}" class="nav-link">
               <i class="link-icon" data-feather="tool"></i>
               <span class="link-title">Settings</span>
             </a>

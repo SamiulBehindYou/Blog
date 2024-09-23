@@ -80,12 +80,6 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/author_messgae', [AdminMessageController::class, 'view_messgae'])->name('admin.view.message');
     Route::get('admin/makeread/{id}', [AdminMessageController::class, 'make_read'])->name('make.read');
 
-    //Blog view
-    Route::get('/blog/view/{id}', [FrontendController::class, 'view_blog'])->name('blog.view');
-
-    // Comment
-    Route::post('comment', [CommentController::class, 'comment'])->name('comment');
-
     // Settings
     Route::get('settings', [SettingController::class, 'settings'])->name('settings');
 });

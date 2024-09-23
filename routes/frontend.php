@@ -5,11 +5,18 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\AuthorControlController;
 use App\Http\Controllers\AuthorMessageController;
+use App\Http\Controllers\AuthorSettingsController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SubscribController;
 
 // Frontend
 Route::get('/', [FrontendController::class, 'front_dashboard'])->name('front.dashboard'); //landing page
+
+//Blog view
+Route::get('/blog/view/{id}', [FrontendController::class, 'view_blog'])->name('blog.view');
+
+// Author's blog view
+Route::get('author/blogs/{id}', [FrontendController::class, 'author_blogs'])->name('single.author.blogs');
 
 
 //Author
@@ -28,8 +35,6 @@ Route::middleware('author')->group(function (){
     Route::post('author/update/profile', [AuthorController::class, 'update_profile'])->name('author.profile.update');
     Route::post('author/profile/image', [AuthorController::class, 'image_update'])->name('author.update.image'); //imp
 
-    //Blog view
-    Route::get('/blog/view/{id}', [FrontendController::class, 'view_blog'])->name('blog.view');
     // Author blog actions
     Route::get('/author/blog/create', [AuthorControlController::class, 'blog_create'])->name('author.blog.create');
     Route::get('/author/blogs', [AuthorControlController::class, 'blogs'])->name('author.blogs');
@@ -48,10 +53,19 @@ Route::middleware('author')->group(function (){
     Route::post('author/messages/store', [AuthorMessageController::class, 'store'])->name('author.message.store');
     Route::get('author/messages/delete/{id}', [AuthorMessageController::class, 'delete'])->name('author.message.delete');
 
-    // Subscrib
+    // Subscribe
     Route::post('subscrib', [SubscribController::class, 'subscrib'])->name('subscrib');
 
     // Comment
     Route::post('comment', [CommentController::class, 'comment'])->name('comment');
+
+    // Settings
+    Route::get('author/settings', [AuthorControlController::class, 'settings'])->name('author.settings');
+    Route::post('author/settings/facebook', [AuthorSettingsController::class, 'facebook'])->name('author.facebook');
+    Route::post('author/settings/instagram', [AuthorSettingsController::class, 'instagram'])->name('author.instagram');
+    Route::post('author/settings/twiter', [AuthorSettingsController::class, 'twiter'])->name('author.twiter');
+    Route::post('author/settings/youtube', [AuthorSettingsController::class, 'youtube'])->name('author.youtube');
+    Route::post('author/settings/about', [AuthorSettingsController::class, 'about'])->name('author.about');
+
 
 });

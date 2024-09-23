@@ -18,7 +18,7 @@
                                 <h2> Brand is just a perception, and perception will match reality over time</h2>
                                 <ul class="entry-meta">
                                     <li class="post-author-img"><img src="{{ $blog->author_id == 0 ? asset('uploads/profile.jpg'):asset('uploads/authors/').'/'.$author->image }}" alt=""></li>
-                                    <li class="post-author"> <a href="author.html">{{ $blog->author_id == 0 ? 'Admin':$author->name }}</a></li>
+                                    <li class="post-author"> <a href="{{ route('single.author.blogs',$blog->author_id) }}">{{ $blog->author_id == 0 ? 'Admin':$author->name }}</a></li>
                                     <li class="entry-cat"> <a href="blog-layout-1.html" class="category-style-1 "> <span class="line"></span>{{ $subcategory[$blog->subcategory_id] }}</a></li>
                                     <li class="post-date"> <span class="line"></span>{{ $blog->created_at->diffForHumans() }}</li>
                                 </ul>

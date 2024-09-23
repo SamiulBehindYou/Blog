@@ -22,8 +22,8 @@ return new class extends Migration
             $table->integer('right_footer')->default(0);
             $table->string('facebook')->nullable();
             $table->integer('facebook_status')->default(0);
-            $table->string('instragram')->nullable();
-            $table->integer('instragram_status')->default(0);
+            $table->string('instagram')->nullable();
+            $table->integer('instagram_status')->default(0);
             $table->string('tiwter')->nullable();
             $table->integer('tiwter_status')->default(0);
             $table->string('youtube')->nullable();

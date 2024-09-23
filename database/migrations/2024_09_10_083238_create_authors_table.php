@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('password');
             $table->string('status')->default(0);
+            $table->string('about')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twiter')->nullable();
+            $table->string('youtube')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

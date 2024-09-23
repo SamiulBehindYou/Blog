@@ -160,4 +160,9 @@ class AuthorControlController extends Controller
         return view('frontend.author_controls.communication.announcement', compact('announcements'));
     }
 
+    // Settings
+    public function settings(){
+        return view('frontend.author_controls.settings.settings');
+    }
+
 }
