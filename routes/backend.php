@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -84,4 +85,7 @@ Route::middleware('auth')->group(function () {
 
     // Comment
     Route::post('comment', [CommentController::class, 'comment'])->name('comment');
+
+    // Settings
+    Route::get('settings', [SettingController::class, 'settings'])->name('settings');
 });

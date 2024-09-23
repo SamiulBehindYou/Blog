@@ -182,7 +182,7 @@ License: You must have a valid license purchased only from above link or https:/
           </li>
           <li class="nav-item nav-category">Management</li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('settings') }}" class="nav-link">
               <i class="link-icon" data-feather="tool"></i>
               <span class="link-title">Settings</span>
             </a>
@@ -240,7 +240,7 @@ License: You must have a valid license purchased only from above link or https:/
 				<div class="navbar-content">
 					<ul class="navbar-nav">
                         <li class="nav-item">
-                            <h3 class="text-primary">Admin Control panel</h3>
+                            <h2 class="text-primary m-4">Admin Control panel</h3>
                         </li>
                     </ul>
 					<ul class="navbar-nav">
@@ -417,6 +417,9 @@ License: You must have a valid license purchased only from above link or https:/
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"></script>
     <script>
         $('#select-tag').selectize({ sortField: 'text' })
+    </script>
+    <script>
+        $('#select-blog').selectize({ sortField: 'text' })
     </script>
     {{-- sweetalert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
