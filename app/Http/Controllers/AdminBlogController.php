@@ -115,24 +115,43 @@ class AdminBlogController extends Controller
     public function blog_edit($id){
         $blog = Blog::find($id);
         $subcategories = SubCategory::all();
-        return view('admin.blog.edit', compact('blog', 'subcategories'));
+        $tags = Tag::all();
+        $selected_tags = explode(',', $blog->tag);
+
+        return view('admin.blog.edit', compact('blog', 'subcategories', 'tags', 'selected_tags'));
     }
 
-    public function update(Request $request){
-        $request->validate([
-            'sub_category' => 'required',
-            'title' => 'required',
-            'description' => 'required|max:1000',
-            'readtime' => 'required',
-            'image' => 'mimes:png,jpg,webp,gif,jpeg|max:4096',
-        ]);
+public function blog_update(Request $request){
+        if($request->image != null){
+            $rules = [
+                'title' => 'required',
+                'sub_category' => 'required',
+                'description' => 'required',
+                'image' => 'required|mimes:png,jpg,webp,gif,jpeg|max:4096',
+                'tag_id' => 'required',
+                'read_time' => 'required',
+            ];
+
+        }else{
+            $rules = [
+                'title' => 'required',
+                'sub_category' => 'required',
+                'description' => 'required',
+                'tag_id' => 'required',
+                'read_time' => 'required',
+            ];
+        }
+        $request->validate($rules);
+
+        $blog = Blog::find($request->blog_id);
+
+//Convert tag id's to string for storing
+        $tag = implode(',', $request->tag_id);
 
         if($request->image != null){
-            $check_image = Blog::find($request->blog_id);
-            if($check_image->image != null){
-                unlink(public_path('uploads/blogs/'.$check_image->image));
-            }
-
+//Image proccessing
+            //Deleting previous image
+            unlink(public_path('uploads/blogs/'.$blog->image));
             $extension = $request->image->extension();
             $file_name = uniqid().'.'.$extension;
 
@@ -148,19 +167,28 @@ class AdminBlogController extends Controller
             // save modified image in new format
             $image->save(public_path('uploads/blogs/'.$file_name));
 
-            $check_image->image = $file_name;
-            $check_image->save();
+            $blog->title = $request->title;
+            $blog->subcategory_id = $request->sub_category;
+            $blog->description = $request->description;
+            $blog->image = $file_name;
+            $blog->tag = $tag;
+            $blog->read_time = $request->read_time;
+            $blog->updated_at = Carbon::now();
+            $blog->save();
+        return back()->withSuccess('Blog Updated.');
         }
 
-        $blog = Blog::findOrfail($request->blog_id);
-        $blog->title = $request->title;
-        $blog->description = $request->description;
-        $blog->read_time = $request->readtime;
-        $blog->subcategory_id = $request->sub_category;
-        $blog->save();
-
-        return back()->withSuccess('Blog updated successfully!');
+// Saving without image
+            $blog->title = $request->title;
+            $blog->subcategory_id = $request->sub_category;
+            $blog->description = $request->description;
+            $blog->tag = $tag;
+            $blog->read_time = $request->read_time;
+            $blog->updated_at = Carbon::now();
+            $blog->save();
+        return back()->withSuccess('Blog Updated.');
     }
+
 
     public function delete($id){
         Blog::find($id)->delete();

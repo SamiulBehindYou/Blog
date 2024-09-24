@@ -39,7 +39,8 @@ Route::middleware('author')->group(function (){
     Route::get('/author/blog/create', [AuthorControlController::class, 'blog_create'])->name('author.blog.create');
     Route::get('/author/blogs', [AuthorControlController::class, 'blogs'])->name('author.blogs');
     Route::post('createpost', [AuthorControlController::class, 'createpost'])->name('author.new.post');
-    Route::get('/author/blogs/edit/{id}', [AuthorControlController::class, 'blog_edit'])->name('author.blog.edit');
+    Route::get('/author/bl/edit/{id}', [AuthorControlController::class, 'blog_edit'])->name('author.blog.edit');
+    Route::post('/author/blog/update', [AuthorControlController::class, 'blog_update'])->name('author.blog.update');
     Route::get('/author/blogs/delete/{id}', [AuthorControlController::class, 'blog_delete'])->name('author.blog.delete');
     Route::get('/author/blog/trash', [AuthorControlController::class, 'view_trash'])->name('author.blog.trash');
     Route::get('/author/blogs/trash/re/{id}', [AuthorControlController::class, 'restore'])->name('author.blog.restore');

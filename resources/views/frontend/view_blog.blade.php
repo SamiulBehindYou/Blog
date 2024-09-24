@@ -80,41 +80,52 @@
                                 <div class="authors-info">
                                     <div class="image">
                                         <a href="author.html" class="image">
-                                            <img src="assets/img/author/1.jpg" alt="">
+                                            <img src="{{ $blog->author_id == 0 ? asset('uploads/profile.jpg'):asset('uploads/authors/').'/'.$author->image }}" alt="">
                                         </a>
                                     </div>
                                     <div class="content">
                                         <h4>{{ $blog->author_id == 0 ? 'Admin':$author->name }}</h4>
-                                        <p> Etiam vitae dapibus rhoncus. Eget etiam aenean nisi montes felis pretium donec veni. Pede vidi condimentum et aenean hendrerit.
-                                            Quis sem justo nisi varius.
+                                        <p>
+                                            @if ($blog->author_id == 0)
+
+                                            @else
+                                                {{ $blog->rel_to_author->about == null ? '':$blog->rel_to_author->about }}
+                                            @endif
                                         </p>
                                         <div class="social-media">
                                             <ul class="list-inline">
+                                                @if ($blog->author_id == 0)
+
+                                            @else
+                                                @if ($blog->rel_to_author->facebook != null)
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="{{ $blog->rel_to_author->facebook == null ? '#':$blog->rel_to_author->facebook }}">
                                                         <i class="fab fa-facebook"></i>
                                                     </a>
                                                 </li>
+                                                @endif
+                                                @if ($blog->rel_to_author->instagram != null)
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="{{ $blog->rel_to_author->instagram == null ? '#':$blog->rel_to_author->instagram }}">
                                                         <i class="fab fa-instagram"></i>
                                                     </a>
                                                 </li>
+                                                @endif
+                                                @if ($blog->rel_to_author->twiter != null)
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="{{ $blog->rel_to_author->twiter == null ? '#':$blog->rel_to_author->twiter }}">
                                                         <i class="fab fa-twitter"></i>
                                                     </a>
                                                 </li>
+                                                @endif
+                                                @if ($blog->rel_to_author->youtube != null)
                                                 <li>
-                                                    <a href="#" >
+                                                    <a href="{{ $blog->rel_to_author->youtube == null ? '#':$blog->rel_to_author->youtube }}" >
                                                         <i class="fab fa-youtube"></i>
                                                     </a>
                                                 </li>
-                                                <li>
-                                                    <a href="#" >
-                                                        <i class="fab fa-pinterest"></i>
-                                                    </a>
-                                                </li>
+                                                @endif
+                                            @endif
                                             </ul>
                                         </div>
                                     </div>

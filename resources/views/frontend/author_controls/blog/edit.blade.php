@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('frontend.author_controls.layout')
 
 @section('main')
 

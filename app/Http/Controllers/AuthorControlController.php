@@ -121,7 +121,7 @@ class AuthorControlController extends Controller
             'image' => $file_name,
             'tag' => $tag,
             'read_time' => $request->read_time,
-            'author_id' => $request->author_id,
+            'author_id' => Auth::guard('author')->user()->id,
             'created_at' => Carbon::now(),
         ]);
 
@@ -129,8 +129,82 @@ class AuthorControlController extends Controller
     }
 
     public function blog_edit($id){
-        //
+        $blog = Blog::find($id);
+        $subcategories = SubCategory::all();
+        $tags = Tag::all();
+        $selected_tags = explode(',', $blog->tag);
+
+        return view('frontend.author_controls.blog.edit', compact('blog', 'subcategories', 'tags', 'selected_tags'));
     }
+
+    public function blog_update(Request $request){
+        if($request->image != null){
+            $rules = [
+                'title' => 'required',
+                'sub_category' => 'required',
+                'description' => 'required',
+                'image' => 'required|mimes:png,jpg,webp,gif,jpeg|max:4096',
+                'tag_id' => 'required',
+                'read_time' => 'required',
+            ];
+
+        }else{
+            $rules = [
+                'title' => 'required',
+                'sub_category' => 'required',
+                'description' => 'required',
+                'tag_id' => 'required',
+                'read_time' => 'required',
+            ];
+        }
+        $request->validate($rules);
+
+        $blog = Blog::find($request->blog_id);
+
+//Convert tag id's to string for storing
+        $tag = implode(',', $request->tag_id);
+
+        if($request->image != null){
+//Image proccessing
+            //Deleting previous image
+            unlink(public_path('uploads/blogs/'.$blog->image));
+            $extension = $request->image->extension();
+            $file_name = uniqid().'.'.$extension;
+
+            // create image manager with desired driver
+            $manager = new ImageManager(new Driver());
+
+            // read image from file system
+            $image = $manager->read($request->image);
+
+            // resize image proportionally to 300px width
+            $image->resize(900, 600);
+
+            // save modified image in new format
+            $image->save(public_path('uploads/blogs/'.$file_name));
+
+            $blog->title = $request->title;
+            $blog->subcategory_id = $request->sub_category;
+            $blog->description = $request->description;
+            $blog->image = $file_name;
+            $blog->tag = $tag;
+            $blog->read_time = $request->read_time;
+            $blog->updated_at = Carbon::now();
+            $blog->save();
+        return back()->withSuccess('Blog Updated.');
+        }
+
+// Saving without image
+            $blog->title = $request->title;
+            $blog->subcategory_id = $request->sub_category;
+            $blog->description = $request->description;
+            $blog->tag = $tag;
+            $blog->read_time = $request->read_time;
+            $blog->updated_at = Carbon::now();
+            $blog->save();
+        return back()->withSuccess('Blog Updated.');
+    }
+
     public function blog_delete($id){
         Blog::find($id)->delete();
         return back()->withSuccess('Blog move to trash!');
