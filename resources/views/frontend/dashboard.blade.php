@@ -119,9 +119,7 @@
 
                         <!--pagination-->
                         @if ($blogs->hasPages())
-                            <div class="pagination-wrapper mt-3 bg-black">
-                                {{ $blogs->links() }}
-                            </div>
+                                {{ $blogs->links('vendor.pagination.custom') }}
                         @endif
                     </div>
                 </div>
