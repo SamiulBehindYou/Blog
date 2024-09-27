@@ -48,21 +48,21 @@
                         <div class="collapse navbar-collapse" id="main_nav">
                             <ul class="navbar-nav ">
                                 <li class="nav-item ">
-                                    <a class="nav-link active" href="{{ route('front.dashboard') }}"> Home </a>
+                                    <a class="nav-link {{ request()->routeIs('front.dashboard') ? 'active' : '' }}" href="{{ route('front.dashboard') }}"> Home </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="blog.html"> Blogs </a>
+                                    <a class="nav-link" href="#"> Blogs </a>
                                 </li>
                                 @auth('author')
                                 <li class="nav-item">
-                                    <a class="nav-link" href="author.html"> Authors </a>
+                                    <a class="nav-link" href="#"> Authors </a>
                                 </li>
                                 @endauth
                                 <li class="nav-item">
-                                    <a class="nav-link" href="about.html"> About </a>
+                                    <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}"> About </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.html"> Contact </a>
+                                    <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}"> Contact </a>
                                 </li>
                             </ul>
                         </div>
@@ -130,10 +130,10 @@
                             <div class="menu">
                                 <h6>Menu</h6>
                                 <ul>
-                                    <li><a href="#">Homepage</a></li>
+                                    <li><a href="{{ route('front.dashboard') }}">Homepage</a></li>
                                     <li><a href="#">Blogs</a></li>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">Contact us</a></li>
+                                    <li><a href="{{ route('about') }}">About us</a></li>
+                                    <li><a href="{{ route('contact') }}">Contact us</a></li>
                                 </ul>
                             </div>
                         </div>

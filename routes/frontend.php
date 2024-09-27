@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthorMessageController;
 use App\Http\Controllers\AuthorSettingsController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SubscribController;
+use App\Livewire\Admin\Contact;
 
 // Frontend
 Route::get('/', [FrontendController::class, 'front_dashboard'])->name('front.dashboard'); //landing page
@@ -67,6 +68,14 @@ Route::middleware('author')->group(function (){
     Route::post('author/settings/twiter', [AuthorSettingsController::class, 'twiter'])->name('author.twiter');
     Route::post('author/settings/youtube', [AuthorSettingsController::class, 'youtube'])->name('author.youtube');
     Route::post('author/settings/about', [AuthorSettingsController::class, 'about'])->name('author.about');
+
+    // Under Livewire
+    Route::get('contact', function(){
+        return view('frontend.contact.contact');
+    })->name('contact');
+    Route::get('about', function(){
+        return view('frontend.about.about');
+    })->name('about');
 
 
 });
