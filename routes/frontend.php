@@ -73,9 +73,7 @@ Route::middleware('author')->group(function (){
     Route::get('contact', function(){
         return view('frontend.contact.contact');
     })->name('contact');
-    Route::get('about', function(){
-        return view('frontend.about.about');
-    })->name('about');
+    Route::get('about', [FrontendController::class, 'about'])->name('about');
 
 
 });

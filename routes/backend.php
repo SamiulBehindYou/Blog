@@ -81,4 +81,8 @@ Route::middleware('auth')->group(function () {
 
     // Settings
     Route::get('settings', [SettingController::class, 'settings'])->name('settings');
+
+    // About
+    Route::get('edit/about', [SettingController::class, 'edit_about'])->name('edit.about');
+    Route::post('update/about', [SettingController::class, 'update_about'])->name('update.about');
 });

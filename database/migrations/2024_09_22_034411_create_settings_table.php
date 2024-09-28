@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->ingter('author_id');
             $table->string('logo')->nullable();
             $table->string('title')->nullable();
             $table->string('icon')->nullable();

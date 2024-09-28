@@ -121,7 +121,7 @@ class AdminBlogController extends Controller
         return view('admin.blog.edit', compact('blog', 'subcategories', 'tags', 'selected_tags'));
     }
 
-public function blog_update(Request $request){
+    public function blog_update(Request $request){
         if($request->image != null){
             $rules = [
                 'title' => 'required',

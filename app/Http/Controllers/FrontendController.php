@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Author;
 use App\Models\Blog;
 use App\Models\Category;
@@ -66,5 +67,10 @@ class FrontendController extends Controller
         $subcategories = SubCategory::all();
         $tags = Tag::inRandomOrder()->limit(20)->get();
         return view('frontend.author_blog', compact('blogs', 'author', 'subcategories', 'tags'));
+    }
+
+    public function about(){
+        $about = About::find(1);
+        return view('frontend.about.about', compact('about'));
     }
 }

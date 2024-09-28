@@ -51,11 +51,11 @@
                                     <a class="nav-link {{ request()->routeIs('front.dashboard') ? 'active' : '' }}" href="{{ route('front.dashboard') }}"> Home </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"> Blogs </a>
+                                    <a class="nav-link {{ request()->segment(1) === 'blog' ? 'active' : '' }}" href="#"> Blogs </a>
                                 </li>
                                 @auth('author')
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"> Authors </a>
+                                    <a class="nav-link {{ request()->segment(1) === 'author' ? 'active' : '' }}" href="#"> Authors </a>
                                 </li>
                                 @endauth
                                 <li class="nav-item">
