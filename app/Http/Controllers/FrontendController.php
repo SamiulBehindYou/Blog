@@ -73,4 +73,28 @@ class FrontendController extends Controller
         $about = About::find(1);
         return view('frontend.about.about', compact('about'));
     }
+
+    public function by_tag($id){
+        $tag = Tag::find($id);
+        $blogs = Blog::where('tag', $id)->get();
+        return view('frontend.by_tag', compact('blogs', 'tag'));
+    }
+    public function by_subcategory($id){
+        $subcategory = SubCategory::find($id);
+        $blogs = Blog::where('subcategory_id', $id)->paginate(10);
+        return view('frontend.by_subcategory', compact('blogs', 'subcategory'));
+    }
+
+    public function search(Request $request){
+
+        if($request->keyword == null){
+            return back()->withError('Search field is blank!');
+        }
+        $keyword = $request->keyword;
+        $blogs = Blog::where('title', 'like', '%'.$request->keyword.'%')->get();
+        $subcategories = SubCategory::all();
+        $tags = Tag::all();
+        $populars = Blog::inRandomOrder()->paginate(5);
+        return view('frontend.search', compact('blogs', 'keyword', 'subcategories', 'tags', 'populars'));
+    }
 }

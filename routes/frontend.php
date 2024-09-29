@@ -19,6 +19,13 @@ Route::get('/blog/view/{id}', [FrontendController::class, 'view_blog'])->name('b
 // Author's blog view
 Route::get('author/blogs/{id}', [FrontendController::class, 'author_blogs'])->name('single.author.blogs');
 
+// Tag wise view
+Route::get('blog/bytag/{id}', [FrontendController::class, 'by_tag'])->name('by.tag');
+// Subcategory wise view
+Route::get('blog/bysubcategroy/{id}', [FrontendController::class, 'by_subcategory'])->name('by.subcategory');
+
+// Search
+Route::get('search/', [FrontendController::class, 'search'])->name('search');
 
 //Author
 Route::get('/front/login', [AuthorController::class, 'front_login'])->name('front.login');

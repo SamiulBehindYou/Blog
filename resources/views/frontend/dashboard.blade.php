@@ -95,7 +95,7 @@
                             <div class="post-list-content">
                                 <ul class="entry-meta">
                                     <li class="entry-cat">
-                                        <a href="" class="category-style-1">{{ $subcategory[$blog->subcategory_id] }}</a>
+                                        <a href="{{ route('by.subcategory', $blog->subcategory_id) }}" class="category-style-1">{{ $subcategory[$blog->subcategory_id] }}</a>
                                     </li>
                                     <li class="post-date"> <span class="line"></span> {{ $blog->created_at->diffForHumans() }}</li>
                                 </ul>
@@ -104,8 +104,7 @@
                                 </h5>
 
                                 <div class="post-btn">
-                                    <a href="{{ route('blog.view', $blog->id) }}" class="btn-read-more">Continue Reading <i
-                                            class="las la-long-arrow-alt-right"></i></a>
+                                    <a href="{{ route('blog.view', $blog->id) }}" class="btn-read-more">Continue Reading <i class="las la-long-arrow-alt-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -134,9 +133,9 @@
                                     <h5>Search</h5>
                                 </div>
                                 <div class=" widget-search">
-                                    <form action="https://oredoo.assiagroupe.net/Oredoo/search.html">
-                                        <input type="search" id="gsearch" name="gsearch" placeholder="Search ....">
-                                        <a href="search.html" class="btn-submit"><i class="las la-search"></i></a>
+                                    <form action="{{ route('search') }}" method="GET">
+                                        <input type="search" id="gsearch" name="keyword" placeholder="Search ....">
+                                        <button type="submit" class="btn-submit"><i class="las la-search"></i></button>
                                     </form>
                                 </div>
                             </div>
@@ -235,11 +234,11 @@
                                     <ul class="list-inline">
                                         @forelse ($tags as $tag)
                                         <li>
-                                            <a href="">{{ $tag->tag }}</a>
+                                            <a href="{{ route('by.tag', $tag->id) }}">{{ $tag->tag }}</a>
                                         </li>
                                         @empty
                                         <li>
-                                            <p>Travel</p>
+                                            <p>No Tags found</p>
                                         </li>
                                         @endforelse
 

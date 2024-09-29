@@ -138,7 +138,7 @@
           </div>
           <div id="progressbar1" class="mx-auto"></div>
           <div class="row mt-4 mb-3">
-            <div class="col-6 d-flex justify-content-end">
+            <div class="col-6 d-flex justify-content-endgit">
               <div>
                 <label class="d-flex align-items-center justify-content-end tx-10 text-uppercase font-weight-medium">Total blog <span class="p-1 ml-1 rounded-circle bg-primary-muted"></span></label>
                 <h5 class="font-weight-bold mb-0 text-right">{{ $total_blog }}</h5>
@@ -151,7 +151,8 @@
               </div>
             </div>
           </div>
-          <a href="{{ route('blog.create') }}" class="btn btn-primary btn-block">Post more blog</a>
+            <br>
+            <a href="{{ route('blog.create') }}" class="btn btn-primary btn-block">Post more blog</a>
         </div>
       </div>
     </div>
