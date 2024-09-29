@@ -12,7 +12,7 @@
     <link rel="icon" sizes="16x16" href="{{ asset('frontend') }}/img/favicon.png">
 
     <!-- Title -->Stay Connected
-    <title> SAMIUL - Personal Blog HTML Template </title>
+    <title>{{ App\Models\Setting::find(1)->title }}</title>
 
     <!-- CSS Plugins -->
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/bootstrap.min.css">
@@ -165,11 +165,22 @@
                         <div class="col-md-3">
                             <div class="menu">
                                 <h6>Follow us</h6>
-                                <ul>
-                                    <li><a href="#">facebook</a></li>
-                                    <li><a href="#">instagram</a></li>
-                                    <li><a href="#">youtube</a></li>
-                                    <li><a href="#">twitter</a></li>
+                                <ul class="p-0 m-0">
+                                    @php
+                                        $setting = App\Models\Setting::find(1);
+                                    @endphp
+                                    @if($setting->facebook_status == 1)
+                                        <li><a target="blank" href="{{ $setting->facebook }}">Facebook</a></li>
+                                    @endif
+                                    @if($setting->instagram_status == 1)
+                                        <li><a target="blank" href="{{ $setting->insagram }}">Insagram</a></li>
+                                    @endif
+                                    @if($setting->twiter_status == 1)
+                                        <li><a target="blank" href="{{ $setting->twiter }}">Twiter</a></li>
+                                    @endif
+                                    @if($setting->youtube_status == 1)
+                                        <li><a target="blank" href="{{ $setting->youtube }}">YouTube</a></li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>

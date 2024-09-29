@@ -194,25 +194,33 @@
 
                                 <div class="widget-stay-connected">
                                     <div class="list">
-                                        <div class="item color-facebook">
-                                            <a href="#"><i class="fab fa-facebook"></i></a>
-                                            <p>Facebook</p>
-                                        </div>
-
-                                        <div class="item color-instagram">
-                                            <a href="#"><i class="fab fa-instagram"></i></a>
-                                            <p>instagram</p>
-                                        </div>
-
-                                        <div class="item color-twitter">
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
-                                            <p>twitter</p>
-                                        </div>
-
-                                        <div class="item color-youtube">
-                                            <a href="#"><i class="fab fa-youtube"></i></a>
-                                            <p>Youtube</p>
-                                        </div>
+                                        @php
+                                        $setting = App\Models\Setting::find(1);
+                                        @endphp
+                                        @if($setting->facebook_status == 1)
+                                            <div class="item color-facebook">
+                                                <a href="{{ $setting->facebook }}"><i class="fab fa-facebook"></i></a>
+                                                <p>Facebook</p>
+                                            </div>
+                                        @endif
+                                        @if($setting->instagram_status == 1)
+                                            <div class="item color-instagram">
+                                                <a href="{{ $setting->insagram }}"><i class="fab fa-instagram"></i></a>
+                                                <p>instagram</p>
+                                            </div>
+                                        @endif
+                                        @if($setting->twiter_status == 1)
+                                            <div class="item color-twitter">
+                                                <a href="{{ $setting->twiter }}"><i class="fab fa-twitter"></i></a>
+                                                <p>twitter</p>
+                                            </div>
+                                        @endif
+                                        @if($setting->youtube_status == 1)
+                                            <div class="item color-youtube">
+                                                <a href="{{ $setting->youtube }}"><i class="fab fa-youtube"></i></a>
+                                                <p>Youtube</p>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

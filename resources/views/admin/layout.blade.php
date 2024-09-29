@@ -13,7 +13,7 @@ License: You must have a valid license purchased only from above link or https:/
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Blog</title>
+	<title>{{ App\Models\Setting::find(1)->title }}</title>
 	<!-- core:css -->
 	<link rel="stylesheet" href="{{ asset('admin') }}/vendors/core/core.css">
 	<!-- endinject -->
@@ -463,6 +463,18 @@ License: You must have a valid license purchased only from above link or https:/
         position: "center",
         icon: "info",
         title: "{{ session('info') }}",
+        showConfirmButton: false,
+        timer: 1500
+        });
+    </script>
+    @endif
+
+    @if(Session::has('message'))
+    <script>
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "{{ Session::has('message') }}",
         showConfirmButton: false,
         timer: 1500
         });

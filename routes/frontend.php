@@ -26,6 +26,13 @@ Route::get('/front/register', [AuthorController::class, 'front_register'])->name
 Route::post('/author/store', [AuthorController::class, 'author_store'])->name('author.store');
 Route::post('/author/login', [AuthorController::class, 'author_login'])->name('author.login');
 
+// Under Livewire
+Route::get('contact', function(){
+    return view('frontend.contact.contact');
+})->name('contact');
+Route::get('about', [FrontendController::class, 'about'])->name('about');
+
+
 Route::middleware('author')->group(function (){
     //Author Dashboard/Controls
     Route::get('/author/controls', [AuthorControlController::class, 'author_control'])->name('author.control');
@@ -68,12 +75,5 @@ Route::middleware('author')->group(function (){
     Route::post('author/settings/twiter', [AuthorSettingsController::class, 'twiter'])->name('author.twiter');
     Route::post('author/settings/youtube', [AuthorSettingsController::class, 'youtube'])->name('author.youtube');
     Route::post('author/settings/about', [AuthorSettingsController::class, 'about'])->name('author.about');
-
-    // Under Livewire
-    Route::get('contact', function(){
-        return view('frontend.contact.contact');
-    })->name('contact');
-    Route::get('about', [FrontendController::class, 'about'])->name('about');
-
 
 });
