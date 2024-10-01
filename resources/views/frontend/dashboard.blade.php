@@ -81,7 +81,7 @@
                 <div class="col-lg-8 oredoo-content">
                     <div class="theiaStickySidebar">
                         <div class="section-title">
-                            <h3>recent Articles </h3>
+                            <h3>Recent Articles </h3>
                             <p>Discover the most outstanding articles in all topics of life.</p>
                         </div>
                         @forelse ($blogs as $blog)
@@ -150,14 +150,14 @@
                                     @foreach ($populers as $sl=>$populer)
                                     <li class="small-post">
                                         <div class="small-post-image">
-                                            <a href="post-single.html">
+                                            <a href="{{ route('blog.view',$blog->id) }}">
                                                 <img src="{{ asset('uploads/blogs').'/'.$populer->image }}" alt="">
                                                 <small class="nb">{{ $sl+1 }}</small>
                                             </a>
                                         </div>
                                         <div class="small-post-content">
                                             <p>
-                                                <a href="post-single.html">{{ $populer->title }}</a>
+                                                <a href="{{ route('blog.view',$blog->id) }}">{{ $populer->title }}</a>
                                             </p>
                                             <small> <span class="slash"></span>{{ $populer->created_at->diffForHumans() }}</small>
                                         </div>

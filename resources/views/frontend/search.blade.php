@@ -84,7 +84,7 @@
                             </div>
                             <div class="widget-categories">
                                 @forelse ($subcategories as $subcategory)
-                                <a class="category-item" href="{{ route('by.subcategory', $blog->subcategory_id) }}">
+                                <a class="category-item" href="{{ route('by.subcategory', $subcategory->id) }}">
                                     <p>{{ $subcategory->subcategory_name }}</p>
                                 </a>
                                 @empty
@@ -180,10 +180,10 @@
                                 </div>
 
                                 <ul class="widget-popular-posts">
-                                    @foreach ($populars as $sl=>$populer)
+                                    @foreach ($populers as $sl=>$populer)
                                     <li class="small-post">
                                         <div class="small-post-image">
-                                            <a href="post-single.html">
+                                            <a href="{{ route }}">
                                                 <img src="{{ asset('uploads/blogs').'/'.$populer->image }}" alt="">
                                                 <small class="nb">{{ $sl+1 }}</small>
                                             </a>
@@ -199,6 +199,7 @@
 
                                 </ul>
                             </div>
+
 
                             <!--Ads-->
                             <div class="widget">

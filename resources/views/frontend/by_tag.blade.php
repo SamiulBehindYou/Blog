@@ -34,8 +34,8 @@
                             <a href="{{ route('blog.view', $blog->id) }}">{{ $blog->title }}</a>
                         </h3>
                         <ul class="entry-meta">
-                            <li class="post-author-img"><img src="{{ asset('uploads/authors/').'/'.$blog->rel_to_author->image }}" alt=""></li>
-                            <li class="post-author"> <a href="{{ route('single.author.blogs', $blog->author_id) }}">{{ $blog->rel_to_author->name }}</a></li>
+                            {{-- <li class="post-author-img"><img src="{{ asset('uploads/authors/').'/'.$blog->rel_to_author->image }}" alt=""></li> --}}
+                            <li class="post-author"> <a href="{{ route('single.author.blogs', $blog->author_id) }}">{{ $blog->author_id == 0 ? 'Admin':$blog->rel_to_author->name }}</a></li>
                             <li class="entry-cat"> <a href="#" class="category-style-1 "> <span class="line"></span> {{ $blog->rel_to_subcategory->subcategory_name }}</a></li>
                             <li class="post-date"> <span class="line"></span> {{ $blog->created_at->diffForHumans() }}</li>
                         </ul>

@@ -219,9 +219,9 @@
                         <button type="button" class="close">
                             <i class="far fa-times"></i>
                         </button>
-                        <form class="search-form" action="https://SAMIUL.assiagroupe.net/SAMIUL/search.html">
-                            <input type="search" value="" placeholder="What are you looking for?">
-                            <button type="submit" class="search-btn"> search</button>
+                        <form class="search-form" action="{{ route('search') }}" method="GET">
+                            <input type="search" name="keyword" placeholder="What are you looking for?">
+                            <button type="submit" class="search-btn"> Search</button>
                         </form>
                     </div>
                 </div>

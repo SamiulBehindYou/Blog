@@ -76,7 +76,8 @@ class FrontendController extends Controller
 
     public function by_tag($id){
         $tag = Tag::find($id);
-        $blogs = Blog::where('tag', $id)->get();
+        $blogs = Blog::where('tag', 'like', '%'.$id.'%')->get();
+
         return view('frontend.by_tag', compact('blogs', 'tag'));
     }
     public function by_subcategory($id){
