@@ -55,18 +55,14 @@
                 <div class="row">
                     <div class="col-lg-12 ">
                         <div class="categories-items">
-                            @forelse ($categories as $category)
+                            @foreach ($categories as $category)
                                 <a class="category-item" href="#">
                                     <div class="image">
                                         <img src="{{ asset('uploads/categories').'/'.$category->category_image }}" alt="">
                                     </div>
                                     <p>{{ $category->category_name }} <span>10</span> </p>
                                 </a>
-
-                            @empty
-                                <h3 class="text-center">No category found</h3>
-                            @endforelse
-
+                            @endforeach
                         </div>
                     </div>
                 </div>
