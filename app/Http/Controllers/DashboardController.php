@@ -40,8 +40,11 @@ class DashboardController extends Controller
         // Total Admin post with percentage ---------------------
         $admin_blogs = Blog::where('author_id', 0)->count();
         //percentage making
-        $percentage = ($admin_blogs/$total_blog)*100;
-        $percentage = intval($percentage);
+        $percentage = null;
+        if($total_blog > 0){
+            $percentage = ($admin_blogs/$total_blog)*100;
+            $percentage = intval($percentage);
+        }
 
         // Last 10 days insights --------------------------------
         $last_ten = [];
@@ -70,7 +73,7 @@ class DashboardController extends Controller
         $total_blog;
         // Getting total day
         $total_day = 0;
-        $loop3 = $blog->get();
+        $loop3 = $blogs->get();
         $i_day = 0;
         foreach($loop3 as $blog){
             if($i_day == $blog->created_at->format('d')){
@@ -105,8 +108,11 @@ class DashboardController extends Controller
             $lh_blog = $fh_blog - $total_blog;
         }
         //growth percentage
-        $g_per = (($lh_blog - $fh_blog)/$fh_blog)*100;
-        $growth = round($g_per, 2);
+        $growth = null;
+        if($fh_blog > 0){
+            $g_per = (($lh_blog - $fh_blog)/$fh_blog)*100;
+            $growth = round($g_per, 2);
+        }
 
 
         // Announcements ------------------------------------

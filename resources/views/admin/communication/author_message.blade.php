@@ -35,7 +35,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5"><div class="text-danger"><i data-feather="bell-off"></i></div><h3>No Messages</h3></td>
+                        <td colspan="6"><div class="text-danger"><i data-feather="bell-off"></i></div><h3>No Messages</h3></td>
                     </tr>
                     @endforelse
                 </table>

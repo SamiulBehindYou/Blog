@@ -24,7 +24,9 @@
                         @error('category_image')
                             <strong class="text-danger">{{ $message }}</strong>
                         @enderror
-                        <img id="img" width="200" class="mt-2 rounded ">
+                        <div>
+                            <img id="img" width="200" class="mt-2 rounded ">
+                        </div>
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Add</button>
