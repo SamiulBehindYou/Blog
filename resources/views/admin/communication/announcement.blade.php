@@ -1,6 +1,7 @@
 @extends('admin.layout')
 
 @section('main')
+@can('Announcement')
 
 <div class="row">
     <div class="col-md-7">
@@ -79,9 +80,7 @@
         </div>
     </div>
 </div>
-@endsection
-
-
-@section('footer')
+@endcan
 
 @endsection
+

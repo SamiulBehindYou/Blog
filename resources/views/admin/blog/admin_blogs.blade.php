@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('main')
-
+@can('Admin_blog')
 <div class="row">
     <div class="col-md-10 m-auto">
         <div class="card">
@@ -34,17 +34,21 @@
                             @endif
                         </td>
                         <td>
+                            @can('Edit_admin_blog')
                             <a href="{{ route('admin.blog.edit', $blog->id) }}" class="badge badge-primary">
                                 <i class="link-icon" data-feather="edit"></i>
                             </a>
+                            @endcan
 
                             <a href="{{ route('admin.blog.visibility', $blog->id) }}" class="badge badge-{{ $blog->visibility == 0 ? 'success':'danger' }}">
                                 <i class="link-icon" data-feather="eye{{ $blog->visibility == 0 ? '':'-off' }}"></i>
                             </a>
 
+                            @can('Delete_admin_blog')
                             <a href="{{ route('admin.blog.delete', $blog->id) }}" class="badge badge-danger">
                                 <i class="link-icon" data-feather="trash-2"></i>
                             </a>
+                            @endcan
                         </td>
                     </tr>
                     @empty
@@ -57,5 +61,6 @@
         </div>
     </div>
 </div>
+@endcan
 
 @endsection

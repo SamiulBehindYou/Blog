@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('main')
-
+@can('Authors')
 <div class="row">
     <div class="col-md-9 m-auto">
         <div class="card">
@@ -16,7 +16,9 @@
                         <th>Email</th>
                         <th>Photo</th>
                         <th>Status</th>
+                        @can('Author_delete')
                         <th>Action</th>
+                        @endcan
                     </tr>
                     @foreach ($authors as $sl=>$author)
 
@@ -38,9 +40,11 @@
                             <a href="{{ route('author.status', $author->id) }}" class="btn btn-outline-danger btn-sm">Not Active</a>
                             @endif
                         </td>
+                        @can('Author_delete')
                         <td>
                             <a href="{{ route('author.delete', $author->id) }}" class="btn btn-outline-danger btn-sm">Delete</a>
                         </td>
+                        @endcan
                     </tr>
                     @endforeach
                 </table>
@@ -48,8 +52,9 @@
         </div>
     </div>
 </div>
-@endsection
+@endcan
 
+@endsection
 
 @section('footer')
 

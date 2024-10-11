@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('main')
-
+@can('Add_sub_category')
 <div class="row">
     <div class="col-md-6 m-auto">
         <div class="card">
@@ -41,5 +41,6 @@
         </div>
     </div>
 </div>
+@endcan
 
 @endsection

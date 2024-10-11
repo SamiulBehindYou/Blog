@@ -1,6 +1,7 @@
 @extends('admin.layout')
 
 @section('main')
+@can('Dashboard')
 <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
     <div>
       <h4 class="mb-3 mb-md-0">Welcome to Dashboard <strong class="text-primary">{{ Auth::user()->name }}</strong></h4>
@@ -362,5 +363,6 @@
 
 </script>
 
+@endcan
 
 @endsection

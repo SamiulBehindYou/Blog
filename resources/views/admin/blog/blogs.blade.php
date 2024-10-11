@@ -2,6 +2,7 @@
 
 @section('main')
 
+@can('Blogs')
 <div class="row">
     <div class="col-md-10 m-auto">
         <div class="card">
@@ -18,7 +19,9 @@
                         <th>Posted</th>
                         <th>Visibility</th>
                         <th>Status</th>
+                        @can('Delete_global_blog')
                         <th>Action</th>
+                        @endcan
                     </tr>
                     @forelse ($blogs as $sl=>$blog)
                     <tr>
@@ -45,9 +48,11 @@
                                 <div class="text-success">Approved</div>
                             @endif
                         </td>
+                        @can('Delete_global_blog')
                         <td>
                             <a href="{{ route('blog.delete', $blog->id) }}" class="badge badge-danger"><i class="link-icon" data-feather="trash-2"></i></a>
                         </td>
+                        @endcan
                     </tr>
                     @empty
                     <tr>
@@ -64,5 +69,6 @@
         </div>
     </div>
 </div>
+@endcan
 
 @endsection

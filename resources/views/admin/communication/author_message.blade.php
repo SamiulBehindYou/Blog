@@ -2,6 +2,7 @@
 
 @section('main')
 
+@can("Author's_message")
 <div class="row">
     <div class="col-md-10 m-auto">
         <div class="card">
@@ -49,9 +50,6 @@
     </div>
 
 </div>
-@endsection
-
-
-@section('footer')
+@endcan
 
 @endsection

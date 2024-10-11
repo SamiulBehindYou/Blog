@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('main')
-
+@can('Blog_trash')
 <div class="row">
     <div class="col-md-10 m-auto">
         <div class="card">
@@ -48,5 +48,6 @@
         </div>
     </div>
 </div>
+@endcan
 
 @endsection

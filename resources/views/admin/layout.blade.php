@@ -51,161 +51,248 @@ License: You must have a valid license purchased only from above link or https:/
       </div>
       <div class="sidebar-body">
         <ul class="nav">
-          <li class="nav-item nav-category">Main</li>
-          <li class="nav-item">
-            <a href="{{ route('dashboard') }}" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admins') }}" class="nav-link">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Admins</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('authors') }}" class="nav-link">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Authors</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.new') }}" class="nav-link">
-              <i class="link-icon" data-feather="user-plus"></i>
-              <span class="link-title">Register new Admin</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">web controls</li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false" aria-controls="category">
-              <i class="link-icon" data-feather="list"></i>
-              <span class="link-title">Category</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse" id="category">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ route('add.categroy') }}" class="nav-link">Add Category</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('categroy') }}" class="nav-link">Categories</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('categroy.trashed') }}" class="nav-link">Trash</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#subcategory" role="button" aria-expanded="false" aria-controls="subcategory">
-              <i class="link-icon" data-feather="git-pull-request"></i>
-              <span class="link-title">Sub Categories</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse" id="subcategory">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ route('add_subcategroy') }}" class="nav-link">Add SubCategory</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('subcategroy') }}" class="nav-link">SubCategories</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#tag" role="button" aria-expanded="false" aria-controls="tag">
-              <i class="link-icon" data-feather="hash"></i>
-              <span class="link-title">Tags</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse" id="tag">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ route('add.tag') }}" class="nav-link">Add Tag</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('tags') }}" class="nav-link">Tags</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+            <li class="nav-item nav-category">Main</li>
 
-          <li class="nav-item nav-category">Manage blogs</li>
-          <li class="nav-item">
-            <a href="{{ route('blog.review') }}" class="nav-link">
-              <i class="link-icon" data-feather="eye"></i>
-              <span class="link-title">Review post</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('blogs') }}" class="nav-link">
-              <i class="link-icon" data-feather="image"></i>
-              <span class="link-title">Blogs</span>
-            </a>
-          </li>
+            @can('Dashboard')
+            <li class="nav-item">
+                <a href="{{ route('dashboard') }}" class="nav-link">
+                <i class="link-icon" data-feather="box"></i>
+                <span class="link-title">Dashboard</span>
+                </a>
+            </li>
+            @endcan
 
-          <li class="nav-item nav-category">Admin post</li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#blog" role="button" aria-expanded="false" aria-controls="blog">
-              <i class="link-icon" data-feather="layers"></i>
-              <span class="link-title">Blogs</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse" id="blog">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ route('blog.create') }}" class="nav-link">Create Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('adminblogs') }}" class="nav-link">Admin Blogs</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('blog.trash') }}" class="nav-link">Trash</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item nav-category">Communication</li>
-          <li class="nav-item">
-            <a href="{{ route('admin.announcement') }}" class="nav-link">
-              <i class="link-icon" data-feather="volume-2"></i>
-              <span class="link-title">Announcement</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.view.message') }}" class="nav-link">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Author's messages <sup class="text-danger">{{ $unread }}</sup></span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">Management</li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#settings" role="button" aria-expanded="false" aria-controls="settings">
-              <i class="link-icon" data-feather="tool"></i>
-              <span class="link-title">Settings</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse" id="settings">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ route('settings') }}" class="nav-link">Genarel</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('edit.about') }}" class="nav-link">About</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+            @can('Admin')
+            <li class="nav-item">
+                <a href="{{ route('admins') }}" class="nav-link">
+                <i class="link-icon" data-feather="users"></i>
+                <span class="link-title">Admins</span>
+                </a>
+            </li>
+            @endcan
 
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="link-icon" data-feather="shield"></i>
-              <span class="link-title">Permissions</span>
-            </a>
-          </li>
+            @can('Authors')
+            <li class="nav-item">
+                <a href="{{ route('authors') }}" class="nav-link">
+                <i class="link-icon" data-feather="users"></i>
+                <span class="link-title">Authors</span>
+                </a>
+            </li>
+            @endcan
 
+            @can('Register_admin')
+            <li class="nav-item">
+                <a href="{{ route('admin.new') }}" class="nav-link">
+                <i class="link-icon" data-feather="user-plus"></i>
+                <span class="link-title">Register new Admin</span>
+                </a>
+            </li>
+            @endcan
+
+            <li class="nav-item nav-category">web controls</li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false" aria-controls="category">
+                <i class="link-icon" data-feather="list"></i>
+                <span class="link-title">Category</span>
+                <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="category">
+                <ul class="nav sub-menu">
+
+                    @can('Add_categroy')
+                    <li class="nav-item">
+                    <a href="{{ route('add.categroy') }}" class="nav-link">Add Category</a>
+                    </li>
+                    @endcan
+
+                    @can('Categories')
+                    <li class="nav-item">
+                    <a href="{{ route('categroy') }}" class="nav-link">Categories</a>
+                    </li>
+                    @endcan
+
+                    @can('Category_trash')
+                    <li class="nav-item">
+                    <a href="{{ route('categroy.trashed') }}" class="nav-link">Trash</a>
+                    </li>
+                    @endcan
+                </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#subcategory" role="button" aria-expanded="false" aria-controls="subcategory">
+                <i class="link-icon" data-feather="git-pull-request"></i>
+                <span class="link-title">Sub Categories</span>
+                <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="subcategory">
+                <ul class="nav sub-menu">
+
+                    @can('Add_sub_category')
+                    <li class="nav-item">
+                    <a href="{{ route('add_subcategroy') }}" class="nav-link">Add SubCategory</a>
+                    </li>
+                    @endcan
+
+                    @can('Sub_category')
+                    <li class="nav-item">
+                    <a href="{{ route('subcategroy') }}" class="nav-link">SubCategories</a>
+                    </li>
+                    @endcan
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#tag" role="button" aria-expanded="false" aria-controls="tag">
+                <i class="link-icon" data-feather="hash"></i>
+                <span class="link-title">Tags</span>
+                <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="tag">
+                <ul class="nav sub-menu">
+
+                    @can('Add_tags')
+                    <li class="nav-item">
+                    <a href="{{ route('add.tag') }}" class="nav-link">Add Tag</a>
+                    </li>
+                    @endcan
+
+                    @can('Tags')
+                    <li class="nav-item">
+                    <a href="{{ route('tags') }}" class="nav-link">Tags</a>
+                    </li>
+                    @endcan
+                </ul>
+                </div>
+            </li>
+
+            <li class="nav-item nav-category">Manage blogs</li>
+
+            @can('Review_post')
+            <li class="nav-item">
+                <a href="{{ route('blog.review') }}" class="nav-link">
+                <i class="link-icon" data-feather="eye"></i>
+                <span class="link-title">Review post</span>
+                </a>
+            </li>
+            @endcan
+            @can('Blogs')
+            <li class="nav-item">
+                <a href="{{ route('blogs') }}" class="nav-link">
+                <i class="link-icon" data-feather="image"></i>
+                <span class="link-title">Blogs</span>
+                </a>
+            </li>
+            @endcan
+
+            <li class="nav-item nav-category">Admin post</li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#blog" role="button" aria-expanded="false" aria-controls="blog">
+                <i class="link-icon" data-feather="layers"></i>
+                <span class="link-title">Blogs</span>
+                <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="blog">
+                <ul class="nav sub-menu">
+
+                    @can('Create_blog')
+                    <li class="nav-item">
+                    <a href="{{ route('blog.create') }}" class="nav-link">Create Blog</a>
+                    </li>
+                    @endcan
+
+                    @can('Admin_blog')
+                    <li class="nav-item">
+                    <a href="{{ route('adminblogs') }}" class="nav-link">Admin Blogs</a>
+                    </li>
+                    @endcan
+
+                    @can('Blog_trash')
+                    <li class="nav-item">
+                    <a href="{{ route('blog.trash') }}" class="nav-link">Trash</a>
+                    </li>
+                    @endcan
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item nav-category">Communication</li>
+
+            @can('Announcement')
+            <li class="nav-item">
+                <a href="{{ route('admin.announcement') }}" class="nav-link">
+                <i class="link-icon" data-feather="volume-2"></i>
+                <span class="link-title">Announcement</span>
+                </a>
+            </li>
+            @endcan
+
+            @can("Author's_message")
+            <li class="nav-item">
+                <a href="{{ route('admin.view.message') }}" class="nav-link">
+                <i class="link-icon" data-feather="mail"></i>
+                <span class="link-title">Author's messages <sup class="text-danger">{{ $unread }}</sup></span>
+                </a>
+            </li>
+            @endcan
+
+            <li class="nav-item nav-category">Management</li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#settings" role="button" aria-expanded="false" aria-controls="settings">
+                <i class="link-icon" data-feather="tool"></i>
+                <span class="link-title">Settings</span>
+                <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="settings">
+                <ul class="nav sub-menu">
+
+                    @can('Generel_settings')
+                    <li class="nav-item">
+                    <a href="{{ route('settings') }}" class="nav-link">Genarel</a>
+                    </li>
+                    @endcan
+
+                    @can('About')
+                    <li class="nav-item">
+                    <a href="{{ route('edit.about') }}" class="nav-link">About</a>
+                    </li>
+                    @endcan
+                </ul>
+                </div>
+            </li>
+
+            @can('Role_manager')
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#permission" role="button" aria-expanded="false" aria-controls="permission">
+                <i class="link-icon" data-feather="shield"></i>
+                <span class="link-title">Role Manager</span>
+                <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="permission">
+                <ul class="nav sub-menu">
+                    @can('Developer_mode')
+                    <li class="nav-item">
+                    <a href="{{ route('permission') }}" class="nav-link">Permissions</a>
+                    </li>
+                    @endcan
+
+                    @can('Roles')
+                    <li class="nav-item">
+                    <a href="{{ route('role') }}" class="nav-link">Roles</a>
+                    </li>
+                    @endcan
+
+                    @can('Assignment')
+                    <li class="nav-item">
+                    <a href="{{ route('assignment') }}" class="nav-link">Assgin Roles</a>
+                    </li>
+                    @endcan
+                </ul>
+                </div>
+            </li>
+            @endcan
 
         </ul>
       </div>

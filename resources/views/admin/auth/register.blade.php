@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('main')
-
+@can('Register_admin')
 <div class="row w-100 mx-0 auth-page">
     <div class="col-md-10 col-xl-8 mx-auto">
         <div class="card">
@@ -44,5 +44,6 @@
         </div>
     </div>
 </div>
+@endcan
 
 @endsection

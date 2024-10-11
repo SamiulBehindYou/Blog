@@ -1,6 +1,7 @@
 @extends('admin.layout')
 
 @section('main')
+@can('Add_categroy')
 
 <div class="row">
     <div class="col-md-6 m-auto">
@@ -36,5 +37,6 @@
         </div>
     </div>
 </div>
+@endcan
 
 @endsection

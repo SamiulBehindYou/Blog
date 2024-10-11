@@ -6,6 +6,7 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
@@ -85,4 +86,14 @@ Route::middleware('auth')->group(function () {
     // About
     Route::get('edit/about', [SettingController::class, 'edit_about'])->name('edit.about');
     Route::post('update/about', [SettingController::class, 'update_about'])->name('update.about');
+
+    // Role manager
+    Route::get('permission', [RoleController::class, 'permission'])->name('permission');
+    Route::post('permission', [RoleController::class, 'permission_store'])->name('permission.store');
+    Route::get('role', [RoleController::class, 'role'])->name('role');
+    Route::post('role', [RoleController::class, 'role_store'])->name('role.store');
+    Route::get('role/delete/{role_id}', [RoleController::class, 'role_detete'])->name('role.delete');
+    Route::get('assignment', [RoleController::class, 'assignment'])->name('assignment');
+    Route::post('assignment', [RoleController::class, 'assign_role'])->name('assign.role');
+    Route::post('remove/role/', [RoleController::class, 'remove_role'])->name('remove.role');
 });
