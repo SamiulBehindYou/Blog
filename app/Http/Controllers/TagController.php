@@ -18,7 +18,7 @@ class TagController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'tag' => 'required|regex:/^\S*$/u|regex:/^[a-zA-Z]+$/u|max:10|unique:tags',
+            'tag' => 'required|regex:/^\S*$/u|regex:/^[a-zA-Z]+$/u|max:15|unique:tags',
         ]);
 
         Tag::insert([
