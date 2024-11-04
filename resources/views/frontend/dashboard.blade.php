@@ -91,7 +91,7 @@
                             <div class="post-list-content">
                                 <ul class="entry-meta">
                                     <li class="entry-cat">
-                                        <a href="{{ route('by.subcategory', $blog->subcategory_id) }}" class="category-style-1">{{ $subcategory[$blog->subcategory_id] }}</a>
+                                        <a href="{{ route('by.subcategory', $blog->subcategory_id) }}" class="category-style-1">{{ $blog->rel_to_subcategory->subcategory_name }}</a>
                                     </li>
                                     <li class="post-date"> <span class="line"></span> {{ $blog->created_at->diffForHumans() }}</li>
                                 </ul>

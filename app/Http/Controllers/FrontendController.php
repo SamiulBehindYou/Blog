@@ -14,12 +14,6 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     public function front_dashboard(){
-        $subcategory[] = 0;
-        $subcat = SubCategory::all();
-        foreach($subcat as $index=>$sub){
-            $subcategory[$sub->id] = $sub->subcategory_name;
-        }
-
         $categories = Category::limit(10)->get();
         $tags = Tag::limit(10)->get();
 
@@ -28,7 +22,17 @@ class FrontendController extends Controller
         $sliders = Blog::where('status', 1)->where('visibility', 1)->latest()->limit(4)->get();
         $populers = Blog::inRandomOrder()->paginate(5);
 
-        return view('frontend.dashboard', compact('blogs', 'sliders', 'categories', 'subcategory', 'tags', 'populers'));
+        return view('frontend.dashboard', compact('blogs', 'sliders', 'categories',  'tags', 'populers'));
+    }
+
+    public function all_blog(){
+        $blogs = Blog::where('status', 1)->orderBy('id', 'DESC')->paginate(8);
+        $sliders = Blog::where('status', 1)->where('visibility', 1)->latest()->limit(4)->get();
+        $populers = Blog::inRandomOrder()->paginate(5);
+
+
+        $tags = Tag::limit(10)->get();
+        return view('frontend.blog.blog', compact('blogs', 'tags', 'sliders', 'populers'));
     }
 
     public function view_blog($id){

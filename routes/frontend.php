@@ -14,6 +14,7 @@ use App\Livewire\Admin\Contact;
 Route::get('/', [FrontendController::class, 'front_dashboard'])->name('front.dashboard'); //landing page
 
 //Blog view
+Route::get('/blog/all_blog', [FrontendController::class, 'all_blog'])->name('all.blog');
 Route::get('/blog/view/{id}', [FrontendController::class, 'view_blog'])->name('blog.view');
 
 // Author's blog view

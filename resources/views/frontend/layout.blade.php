@@ -51,7 +51,7 @@
                                     <a class="nav-link {{ request()->routeIs('front.dashboard') ? 'active' : '' }}" href="{{ route('front.dashboard') }}"> Home </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{ request()->segment(1) === 'blog' ? 'active' : '' }}" href="#"> Blogs </a>
+                                    <a class="nav-link {{ request()->segment(1) === 'blog' ? 'active' : '' }}" href="{{ route('all.blog') }}"> Blogs </a>
                                 </li>
                                 @auth('author')
                                 <li class="nav-item">
